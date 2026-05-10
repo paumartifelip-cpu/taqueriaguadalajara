@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kitchen Display System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "on-surface": "#271816",
+                        "on-surface-variant": "#5b403d",
+                        "primary-container": "#d32f2f",
+                        "secondary-container": "#fdd34d",
+                        "on-primary-fixed-variant": "#930010",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ffedeb",
+                        "secondary-fixed": "#ffe087",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#3e2c2a",
+                        "on-primary-container": "#fff2f0",
+                        "on-background": "#271816",
+                        "on-tertiary-fixed-variant": "#004d65",
+                        "on-error": "#ffffff",
+                        "background": "#fff8f7",
+                        "inverse-primary": "#ffb3ac",
+                        "on-secondary": "#ffffff",
+                        "primary": "#af101a",
+                        "on-tertiary-fixed": "#001f2a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#e9f7ff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#bee9ff",
+                        "tertiary": "#005f7b",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "surface-variant": "#f9dcd9",
+                        "primary-fixed-dim": "#ffb3ac",
+                        "surface-bright": "#fff8f7",
+                        "outline": "#8f6f6c",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed": "#410003",
+                        "surface-container": "#ffe9e7",
+                        "surface-container-highest": "#f9dcd9",
+                        "surface-container-high": "#ffe2de",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#ffdad6",
+                        "tertiary-container": "#00799c",
+                        "surface-tint": "#ba1a20",
+                        "tertiary-fixed-dim": "#7bd1f8",
+                        "on-secondary-fixed": "#241a00",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#e4beba",
+                        "surface-container-low": "#fff0ef",
+                        "on-secondary-container": "#725b00",
+                        "surface-dim": "#f1d3d0",
+                        "surface": "#fff8f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "margin-desktop": "120px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "sm": "12px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-lg": ["Montserrat"],
+                        "label-sm": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- NavigationDrawer -->
+<aside class="fixed inset-y-0 left-0 w-80 z-[60] bg-surface-container dark:bg-inverse-surface shadow-2xl flex flex-col h-full py-6 space-y-2 hidden md:flex">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Store Manager" class="w-full h-full object-cover" data-alt="A professional headshot of a smiling female store manager with dark hair, wearing a crisp white collared shirt. Soft, warm natural lighting against a neutral background. High-quality corporate portrait photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhjTJRr-9Q7byBDOUzjoqe5andq_UicIlFaCVRzQk_2y1TAFcuS61Ki7CqVKQ79FTmV-DEr2T0z50o8ZkGOvi3J8SrFvp2OdBoJwTeCoPjn-d0ItjRqCRZk5XS4fNBCmsaZ39X1KK16KGjWzCPyMePrsQeUzxm2cVhofaNy0KLWaQr3MtqOpuJNQQCq9XCq0IbdnoisWYn7GRzzsGbCwi8W8HhZ0elk3hR5TzKPVEVWXMvM1pNA-3gTjRjnIN1cSPdsipz5eMSPk"/>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">Store Manager</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">GUEROBARBACOA</p>
+<span class="inline-block px-2 py-0.5 mt-1 bg-surface-container-highest text-on-surface-variant rounded text-xs font-bold uppercase tracking-wider">Admin Mode</span>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-1">
+<!-- Active Navigation Item: Kitchen -->
+<li>
+<a class="flex items-center gap-4 bg-primary text-on-primary rounded-xl mx-4 my-1 px-4 py-3 tap-highlight-transparent active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">countertops</span>
+<span class="font-label-lg text-label-lg">Kitchen</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all tap-highlight-transparent active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-lg text-label-lg">Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all tap-highlight-transparent active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-lg text-label-lg">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all tap-highlight-transparent active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="mt-auto px-6 pt-4 border-t border-outline-variant/30">
+<div class="font-headline-lg text-primary font-black text-center italic tracking-tighter">GUEROBARBACOA</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-80 flex flex-col min-h-screen">
+<!-- TopAppBar (Mobile Only - usually KDS is tablet/desktop, but including for completeness based on prompts) -->
+<header class="bg-surface/80 backdrop-blur-lg dark:bg-surface-dim/80 docked full-width top-0 sticky z-50 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 md:hidden">
+<button class="text-on-surface-variant hover:bg-primary-container/10 transition-colors rounded-full p-2 scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary italic tracking-tighter dark:text-primary-fixed-dim">GUEROBARBACOA</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a smiling female store manager with dark hair, wearing a crisp white collared shirt." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiG4Gfx_ZoZVgMhj2ZYvDJiLCcbHSR4o2p8DCrjI-unzEgDRA4s4yxnU39yalq8l_H-bd5AsaMnkLtpI_E0_r9yB1FbwwrtcDDwWLIkhkpQCLxTVxNmLBUX2fNkPYFkKU3ukxZYMwXJjUP2Py4Aopab5FeyWLKL_We31vC-dYznx42-0ViYnE_WhD92DTElPGEPFGhHw0ZnkFgE1i07D3LTURYIdc9_Si8KkqMpwjxaM3YvTRsWCkmRshJQ2ftuQs4K-bTMLrtYG4"/>
+</div>
+</header>
+<!-- Kitchen Dashboard Canvas -->
+<div class="flex-1 p-4 md:p-md lg:p-margin-desktop overflow-x-hidden">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Active Orders</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">12 pending in queue</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-lg border border-outline-variant text-on-surface font-label-lg text-label-lg">
+<span class="material-symbols-outlined">filter_list</span>
+                        Filter
+                    </button>
+</div>
+</div>
+<!-- Bento Grid for Orders -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Order Card 1: Urgent -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/30 flex flex-col overflow-hidden relative">
+<!-- Urgent Indicator Strip -->
+<div class="absolute top-0 left-0 w-full h-1.5 bg-error"></div>
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-start bg-error-container/20">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">#A042</span>
+<span class="px-2 py-0.5 bg-error text-on-error rounded text-[10px] font-bold uppercase tracking-wider">Urgent</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mt-1">Maria Rodriguez</p>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">timer</span>
+                                14:20
+                            </div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Dine-in</p>
+</div>
+</div>
+<div class="flex-1 p-4 bg-surface-bright">
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<div class="font-headline-md text-headline-md text-primary mt-0.5">2x</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Super Lonche</p>
+<div class="mt-1 flex flex-wrap gap-1">
+<span class="inline-block px-2 py-1 bg-secondary-container text-on-secondary-container text-xs rounded border border-secondary/20 font-medium">+ Extra Piña</span>
+<span class="inline-block px-2 py-1 bg-surface-container text-on-surface-variant text-xs rounded border border-outline-variant/30">Sin Cebolla</span>
+</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="font-headline-md text-headline-md text-primary mt-0.5">1x</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Lonche Bistec</p>
+<div class="mt-1 flex flex-wrap gap-1">
+<span class="inline-block px-2 py-1 bg-secondary-container text-on-secondary-container text-xs rounded border border-secondary/20 font-medium">+ Asada</span>
+</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="font-headline-md text-headline-md text-primary mt-0.5">2x</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Horchata</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="p-4 bg-surface-container-lowest mt-auto border-t border-outline-variant/10">
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed transition-colors rounded-lg font-label-lg text-label-lg uppercase tracking-wide flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Marcar como Listo
+                        </button>
+</div>
+</div>
+<!-- Order Card 2: Normal -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/30 flex flex-col overflow-hidden relative">
+<div class="absolute top-0 left-0 w-full h-1.5 bg-secondary-container"></div>
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-start bg-surface-container-low">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">#A043</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mt-1">Carlos Mendoza</p>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">timer</span>
+                                08:45
+                            </div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Takeout</p>
+</div>
+</div>
+<div class="flex-1 p-4 bg-surface-bright">
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<div class="font-headline-md text-headline-md text-primary mt-0.5">3x</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Taco de Barbacoa</p>
+<div class="mt-1 flex flex-wrap gap-1"><span class="inline-block px-2 py-1 bg-surface-container text-on-surface-variant text-xs rounded border border-outline-variant/30">Con Todo</span></div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="font-headline-md text-headline-md text-primary mt-0.5">1x</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Guacamole &amp; Chips</p>
+<div class="mt-1 flex flex-wrap gap-1">
+<span class="inline-block px-2 py-1 bg-secondary-container text-on-secondary-container text-xs rounded border border-secondary/20 font-medium">+ Extra Lime</span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="p-4 bg-surface-container-lowest mt-auto border-t border-outline-variant/10">
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed transition-colors rounded-lg font-label-lg text-label-lg uppercase tracking-wide flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Marcar como Listo
+                        </button>
+</div>
+</div>
+<!-- Order Card 3: New -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/30 flex flex-col overflow-hidden relative">
+<div class="absolute top-0 left-0 w-full h-1.5 bg-tertiary"></div>
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-start bg-tertiary-container/10">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">#A044</span>
+<span class="px-2 py-0.5 bg-tertiary text-on-tertiary rounded text-[10px] font-bold uppercase tracking-wider animate-pulse">New</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mt-1">Delivery App</p>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">timer</span>
+                                01:12
+                            </div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">UberEats</p>
+</div>
+</div>
+<div class="flex-1 p-4 bg-surface-bright">
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<div class="font-headline-md text-headline-md text-primary mt-0.5">1x</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Super Lonche</p>
+<div class="mt-1 flex flex-wrap gap-1">
+<span class="inline-block px-2 py-1 bg-surface-container text-on-surface-variant text-xs rounded border border-outline-variant/30">Pollo</span>
+<span class="inline-block px-2 py-1 bg-secondary-container text-on-secondary-container text-xs rounded border border-secondary/20 font-medium">+ Salsa Verde Extra</span>
+</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="font-headline-md text-headline-md text-primary mt-0.5">2x</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Taco de Barbacoa</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="p-4 bg-surface-container-lowest mt-auto border-t border-outline-variant/10">
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed transition-colors rounded-lg font-label-lg text-label-lg uppercase tracking-wide flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Marcar como Listo
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

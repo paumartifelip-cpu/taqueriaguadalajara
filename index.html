@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+    <meta name="description" content="Güero Barbacoa — Tacos, lonches y barbacoa por kilo. Esperanza #11, Col. La Federacha, Guadalajara. Servicio a domicilio."/>
+    <meta name="theme-color" content="#af101a"/>
+    <meta property="og:title" content="Güero Barbacoa"/>
+    <meta property="og:description" content="Tacos, lonches y barbacoa por kilo en Guadalajara. Servicio a domicilio."/>
+    <meta property="og:type" content="website"/>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%AE%3C/text%3E%3C/svg%3E"/>
+    <title>Güero Barbacoa — Pedidos en línea</title>
+
+    <!-- Tailwind CSS CDN with Forms & Container Queries plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Google Fonts & Material Symbols -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Link custom styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tailwind System Colors Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#af101a",               /* Salsa Red */
+                        "secondary-container": "#fdd34d",   /* Maize Yellow */
+                        "on-secondary-container": "#725b00",
+                        "tertiary": "#005f7b",              /* Cilantro Green */
+                        "on-tertiary": "#ffffff",
+                        "background": "#fff8f7",            /* Crema Base */
+                        "on-background": "#271816",
+                        "surface": "#fff8f7",
+                        "on-surface": "#271816",
+                        "on-surface-variant": "#5b403d",
+                        "surface-container": "#ffe9e7",
+                        "surface-container-high": "#ffe2de",
+                        "surface-container-highest": "#f9dcd9",
+                        "surface-container-low": "#fff0ef",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fff8f7",
+                        "outline-variant": "#e4beba",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "12px",
+                        "2xl": "16px",
+                        "3xl": "24px",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "margin-desktop": "120px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "sm": "12px",
+                        "margin-mobile": "20px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen relative antialiased">
+
+    <noscript>
+        <div style="padding:2rem;text-align:center;font-family:Montserrat,sans-serif;background:#af101a;color:#fff;">
+            Esta aplicación requiere JavaScript. Activa JavaScript en tu navegador para hacer un pedido.
+            Si necesitas atención inmediata, llama al <a href="tel:3311807561" style="color:#fdd34d;">331 180 7561</a>.
+        </div>
+    </noscript>
+
+    <!-- Global Toast container -->
+    <div id="toast-container"></div>
+
+    <!-- GLOBAL SWITCHER PORTAL BUTTON -->
+    <div id="global-view-switcher">
+        <button id="global-switcher-btn" class="w-14 h-14 rounded-full switcher-btn flex items-center justify-center shadow-xl active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">swap_horiz</span>
+        </button>
+        <div id="global-switcher-menu" class="switcher-menu p-2">
+            <p class="text-[11px] font-black uppercase text-on-surface-variant tracking-wider p-3 pb-2 border-b border-outline-variant/20">Cambiar Rol / Vista</p>
+            <div class="flex flex-col gap-1 mt-2">
+                <button class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-primary/10 text-xs font-bold text-on-surface-variant hover:text-primary flex items-center gap-2" onclick="Router.navigateTo('selector')">
+                    <span class="material-symbols-outlined text-[18px]">home</span> Portal de Bienvenida
+                </button>
+                <button class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-primary/10 text-xs font-bold text-on-surface-variant hover:text-primary flex items-center gap-2" onclick="Router.navigateTo('inicio')">
+                    <span class="material-symbols-outlined text-[18px]">smartphone</span> Vista Cliente (Móvil)
+                </button>
+                <button class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-primary/10 text-xs font-bold text-on-surface-variant hover:text-primary flex items-center gap-2" onclick="Router.navigateTo('cocina')">
+                    <span class="material-symbols-outlined text-[18px]">countertops</span> Panel de Cocina (KDS)
+                </button>
+                <button class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-primary/10 text-xs font-bold text-on-surface-variant hover:text-primary flex items-center gap-2" onclick="Router.navigateTo('estadisticas')">
+                    <span class="material-symbols-outlined text-[18px]">monitoring</span> Estadísticas (Admin)
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 1. VIEW SELECTOR / PORTAL DE BIENVENIDA -->
+    <section id="view-selector" class="view-panel active min-h-screen flex flex-col justify-center items-center px-6 py-12 bg-gradient-to-br from-primary/10 via-background to-secondary-container/10">
+        <div class="max-w-2xl w-full text-center flex flex-col items-center gap-4">
+            <h1 class="font-display-lg text-4xl md:text-6xl font-black text-primary italic tracking-tighter mb-2 scale-95 md:scale-100">GÜERO BARBACOA</h1>
+            <p class="font-body-md text-sm md:text-base text-on-surface-variant max-w-lg mb-8 leading-relaxed">
+                ¡Bienvenido al ecosistema interactivo de Güero Barbacoa! Abre diferentes ventanas o dispositivos para ver la sincronización local en tiempo real.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                <!-- Select Client -->
+                <div class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1.5" onclick="Router.navigateTo('inicio')">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                        <span class="material-symbols-outlined text-4xl">smartphone</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-base font-bold text-on-surface">Vista Cliente</h3>
+                        <p class="text-xs text-on-surface-variant mt-2 leading-relaxed">Pide tacos de barbacoa, personaliza tus lonches y sigue el estado de tu pedido.</p>
+                    </div>
+                    <span class="mt-auto text-xs bg-primary/10 text-primary font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Entrar</span>
+                </div>
+                
+                <!-- Select Kitchen -->
+                <div class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1.5" onclick="Router.navigateTo('cocina')">
+                    <div class="w-16 h-16 rounded-full bg-secondary-container/20 text-on-secondary-container flex items-center justify-center">
+                        <span class="material-symbols-outlined text-4xl">countertops</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-base font-bold text-on-surface">Panel de Cocina</h3>
+                        <p class="text-xs text-on-surface-variant mt-2 leading-relaxed">Recibe órdenes al instante con campanazos acústicos y despacha platos en tiempo real.</p>
+                    </div>
+                    <span class="mt-auto text-xs bg-secondary-container text-on-secondary-container font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Despachar</span>
+                </div>
+                
+                <!-- Select Admin Stats -->
+                <div class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1.5" onclick="Router.navigateTo('estadisticas')">
+                    <div class="w-16 h-16 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center">
+                        <span class="material-symbols-outlined text-4xl">monitoring</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-base font-bold text-on-surface">Panel de Dueño</h3>
+                        <p class="text-xs text-on-surface-variant mt-2 leading-relaxed">Consulta ventas diarias, promedios de tickets y métricas del restaurante en tiempo real.</p>
+                    </div>
+                    <span class="mt-auto text-xs bg-tertiary/10 text-tertiary font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Analizar</span>
+                </div>
+            </div>
+            
+            <p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest mt-12 font-bold">Tip: ¡Prueba abrir dos pestañas juntas para ver la magia!</p>
+        </div>
+    </section>
+
+
+    <!-- 2. CLIENT: INICIO (HOME LANDING VIEW) -->
+    <div id="view-inicio" class="view-panel pb-32">
+        <!-- Top App Bar -->
+        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky z-50 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16">
+            <h1 class="font-display-lg text-lg font-black text-primary italic tracking-tighter">GÜERO BARBACOA</h1>
+            <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/40 cursor-pointer" onclick="Router.navigateTo('selector')">
+                <img alt="Perfil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBelpQUnZbc5YCfTzC-v3pdruBphg2wOcOTXu01sTo4N2R1jcyInA87pBmxlOi8YrKnEoXJamBL70QP4TIwscOABuIrnvbG4_xuk3NY-jdy1xo8sDB9XKSy-gxwWtiIoo1Of1fRqJVp48jG94_OsFhSgufIRdRxwjAQ4DDVOvQvTMjgsHn3QjVEKKbTZHZvDIm1LAZzGKBKlR7MqqbGBWZGt1Tl_s0lnu-F-6JgR1WqiwuKpEmuEyHWEUQNtl4sdmja0Z5M0PI_ufU"/>
+            </div>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-margin-mobile py-6 flex flex-col gap-8">
+            <!-- Hero Banner Area -->
+            <section class="relative w-full h-48 md:h-64 rounded-2xl overflow-hidden shadow-md">
+                <div class="absolute inset-0 bg-black/40 z-10"></div>
+                <img class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBekV8YCoK6O5jRP1ilAecoSXcqj6DwLia0yvGgKbTwkQemInro3CzKkhb6tq3BLPR-lWwwOHNgdqB_B8RZVgd_Y6ARwLT74zyDC0fgKFSahWEJ5GVvO1SVf1L5Gg9fd4e4bA3zNOUR5ecgXTycbxB61_QPUzr9gpGJUGASbEnPKSdrX-9maIfN2fcOBVmpN252PMLNH4Nxju-CBNE_8El-Ufjv7cdsTSrfQRaN5twTHKnNF4meGwtTTpSoo4pFvKO5b62LJ4zTnrI" alt="Hero">
+                <div class="absolute inset-x-margin-mobile bottom-6 z-20 max-w-md flex flex-col gap-2">
+                    <h2 class="font-headline-lg text-white text-xl md:text-3xl font-black italic tracking-tight">¡Barbacoa de la Federacha!</h2>
+                    <p class="font-body-md text-xs md:text-sm text-white/90">Tacos, lonches y barbacoa por kilo, hechos al momento. Servicio a domicilio $10.</p>
+                    <button class="mt-2 self-start bg-secondary-container text-on-secondary-container font-label-lg text-xs font-bold py-2.5 px-5 rounded-lg hover:opacity-90 active:scale-95 transition-all shadow-sm" onclick="Router.navigateTo('menu')">Pedir Ahora</button>
+                </div>
+            </section>
+
+            <!-- Horizontal Scroll Recommended Section -->
+            <section class="w-full">
+                <div class="flex justify-between items-end mb-4">
+                    <h3 class="font-headline-md text-base font-bold text-on-surface">Recomendaciones del Chef</h3>
+                    <span class="text-xs text-primary font-bold hover:underline cursor-pointer" onclick="Router.navigateTo('menu')">Ver todo</span>
+                </div>
+                <div id="inicio-recommended" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+                    <!-- Recommended cards injected dynamically from app.js -->
+                </div>
+            </section>
+
+            <!-- Nuestra Carta — versión digital del cartel del local -->
+            <section class="w-full poster-card relative overflow-hidden rounded-2xl p-6 md:p-8 shadow-lg">
+                <span class="poster-blob poster-blob-tr"></span>
+                <span class="poster-blob poster-blob-bl"></span>
+
+                <header class="text-center mb-2 relative z-10">
+                    <h3 class="poster-title font-display-lg text-2xl md:text-3xl font-black italic tracking-tight">GÜERO BARBACOA</h3>
+                    <p class="text-white/90 text-xs md:text-sm font-semibold mt-1">Servicio a domicilio · Costo $10</p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 relative z-10">
+                    <div class="poster-block">
+                        <div class="poster-pill">TACOS</div>
+                        <ul class="mt-3 space-y-1.5 text-sm">
+                            <li class="flex justify-between gap-3"><span>Taco de Barbacoa</span><span class="font-bold">$22</span></li>
+                            <li class="flex justify-between gap-3"><span>Taco de Bistec</span><span class="font-bold">$22</span></li>
+                            <li class="flex justify-between gap-3"><span>Taco de Barbacoa con queso</span><span class="font-bold">$28</span></li>
+                            <li class="flex justify-between gap-3"><span>Taco de Bistec con queso</span><span class="font-bold">$28</span></li>
+                            <li class="flex justify-between gap-3"><span>Super Taco</span><span class="font-bold">$38</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="poster-block">
+                        <div class="poster-pill">LONCHE</div>
+                        <ul class="mt-3 space-y-1.5 text-sm">
+                            <li class="flex justify-between gap-3"><span>Lonche Barbacoa</span><span class="font-bold">$60</span></li>
+                            <li class="flex justify-between gap-3"><span>Lonche Bistec</span><span class="font-bold">$60</span></li>
+                            <li class="flex justify-between gap-3"><span>Lonche Barbacoa con queso</span><span class="font-bold">$70</span></li>
+                            <li class="flex justify-between gap-3"><span>Lonche Bistec con queso</span><span class="font-bold">$70</span></li>
+                            <li class="flex justify-between gap-3"><span>Super Lonche</span><span class="font-bold">$80</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="poster-block">
+                        <div class="poster-pill">EXTRAS</div>
+                        <ul class="mt-3 space-y-1.5 text-sm">
+                            <li class="flex justify-between gap-3"><span>Quesadilla</span><span class="font-bold">$15</span></li>
+                            <li class="flex justify-between gap-3"><span>1/2 Kg</span><span class="font-bold">$140</span></li>
+                            <li class="flex justify-between gap-3"><span>1 Kg</span><span class="font-bold">$280</span></li>
+                            <li class="flex justify-between gap-3"><span>Orden Personal</span><span class="font-bold">$90</span></li>
+                            <li class="flex justify-between gap-3"><span>1/2 Kg Tortilla</span><span class="font-bold">$15</span></li>
+                            <li class="flex justify-between gap-3"><span>1 Kg Tortilla</span><span class="font-bold">$25</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <footer class="mt-6 pt-4 border-t border-white/20 flex flex-col md:flex-row gap-2 md:gap-6 justify-center items-center text-white/95 text-xs md:text-sm font-semibold relative z-10">
+                    <a href="tel:3311807561" class="flex items-center gap-1.5 hover:text-secondary-container transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">call</span>
+                        331 180 7561
+                    </a>
+                    <span class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-[16px]">location_on</span>
+                        Esperanza #11, Col. La Federacha
+                    </span>
+                </footer>
+            </section>
+        </main>
+
+        <!-- Client Mobile Bottom Navigation Drawer -->
+        <nav class="md:hidden flex justify-around items-center w-full h-20 pb-safe px-4 bg-surface/90 backdrop-blur-xl docked full-width bottom-0 fixed z-50 rounded-t-xl border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(211,47,47,0.05)]">
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="inicio" onclick="Router.navigateTo('inicio')">
+                <span class="material-symbols-outlined text-[24px]">home</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Inicio</span>
+            </button>
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client animate-pulse" data-view="menu" onclick="Router.navigateTo('menu')">
+                <span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Menú</span>
+            </button>
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="estado" onclick="Router.navigateTo('estado')">
+                <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Pedido</span>
+            </button>
+        </nav>
+    </div>
+
+
+    <!-- 3. CLIENT: MENÚ VIEW -->
+    <div id="view-menu" class="view-panel pb-32">
+        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky z-50 border-b border-outline-variant/20 shadow-sm flex flex-col w-full z-40">
+            <div class="flex justify-between items-center w-full px-margin-mobile h-16">
+                <button class="text-on-surface-variant hover:bg-primary/10 p-2 rounded-full flex items-center justify-center" onclick="Router.navigateTo('inicio')">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <h1 class="font-display-lg text-lg font-black text-primary italic tracking-tighter">NUESTRO MENÚ</h1>
+                <div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant/30 cursor-pointer" onclick="Router.navigateTo('selector')">
+                    <img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtBYBTgOChhuSddIrP2_RQr8toLjgg-fOV4cm1wLfVar7vPc05lGUNgYLFFnHQ12dl_f7YUsIYwQjEkY2ZaLRS4cH11odjFJcYAArPT58jGDkAWrZL9D2h88ohzFF7_vD_KiPnkKAjBDqMA13pH99U9gUUVexdUxpa3NlncuSHOsk2O98qpbeeQoco3zsuzwGfIG6ZbdqGPgpu80uIf4AjE_6vhmFfzWybkoNZrnA335UFQ1bsANiDF2ysIbESKXSqedXxeJ25IgY"/>
+                </div>
+            </div>
+            
+            <!-- Sticky Category Scroll Row chips -->
+            <div class="flex gap-2.5 overflow-x-auto px-margin-mobile py-3 bg-surface border-t border-outline-variant/10 no-scrollbar">
+                <button class="category-chip category-chip-active px-5 py-2 rounded-full border border-outline-variant bg-surface text-on-surface-variant text-xs uppercase tracking-wider font-bold shrink-0 transition-all cursor-pointer" data-cat="todos" onclick="Controllers.changeCategory(this)">Todos</button>
+                <button class="category-chip px-5 py-2 rounded-full border border-outline-variant bg-surface text-on-surface-variant text-xs uppercase tracking-wider font-bold shrink-0 transition-all cursor-pointer" data-cat="tacos" onclick="Controllers.changeCategory(this)">Tacos</button>
+                <button class="category-chip px-5 py-2 rounded-full border border-outline-variant bg-surface text-on-surface-variant text-xs uppercase tracking-wider font-bold shrink-0 transition-all cursor-pointer" data-cat="lonches" onclick="Controllers.changeCategory(this)">Lonches</button>
+                <button class="category-chip px-5 py-2 rounded-full border border-outline-variant bg-surface text-on-surface-variant text-xs uppercase tracking-wider font-bold shrink-0 transition-all cursor-pointer" data-cat="extras" onclick="Controllers.changeCategory(this)">Extras</button>
+            </div>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-margin-mobile py-6">
+            <!-- Dishes Bento Grid -->
+            <div id="menu-items-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected dynamically from app.js -->
+            </div>
+        </main>
+
+        <!-- Bottom Bar -->
+        <nav class="md:hidden flex justify-around items-center w-full h-20 pb-safe px-4 bg-surface/90 backdrop-blur-xl docked full-width bottom-0 fixed z-50 rounded-t-xl border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(211,47,47,0.05)]">
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="inicio" onclick="Router.navigateTo('inicio')">
+                <span class="material-symbols-outlined text-[24px]">home</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Inicio</span>
+            </button>
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="menu" onclick="Router.navigateTo('menu')">
+                <span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Menú</span>
+            </button>
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="estado" onclick="Router.navigateTo('estado')">
+                <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Pedido</span>
+            </button>
+        </nav>
+    </div>
+
+
+    <!-- 4. CLIENT: PERSONALIZAR PEDIDO VIEW -->
+    <div id="view-personalizar" class="view-panel pb-32">
+        <!-- Dish Hero Image Area -->
+        <header class="relative w-full h-64 md:h-96">
+            <div class="absolute inset-0 bg-black/25 z-10"></div>
+            <img id="p-image" class="w-full h-full object-cover" src="" alt="Dish placeholder">
+            <!-- Glassmorphic Back Button -->
+            <div class="absolute top-safe pt-4 left-margin-mobile z-20">
+                <button class="w-10 h-10 rounded-full bg-surface/50 backdrop-blur-md flex items-center justify-center text-on-surface shadow-md border border-white/20 active:scale-90 transition-all cursor-pointer" onclick="Router.navigateTo('menu')">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Customization Content Canvas -->
+        <main class="px-margin-mobile md:px-margin-desktop py-6 pb-32 max-w-2xl mx-auto -mt-6 relative z-20 bg-background rounded-t-3xl md:rounded-t-none md:mt-0 shadow-[0px_-10px_30px_rgba(211,47,47,0.05)] md:shadow-none">
+            <!-- Product Header -->
+            <div class="flex justify-between items-start mb-2">
+                <h1 id="p-title" class="font-headline-lg text-xl md:text-3xl text-on-surface tracking-tight font-black leading-tight">Dish Name</h1>
+                <span id="p-base-price" class="font-headline-md text-lg md:text-xl text-primary bg-primary-container/10 px-3 py-1 rounded-lg font-bold">$0.00</span>
+            </div>
+            <p id="p-description" class="font-body-md text-sm text-on-surface-variant mb-8 leading-relaxed">Dish description text here.</p>
+            
+            <!-- Customization Sections -->
+            <div class="space-y-8">
+                <!-- Tortilla Type -->
+                <section id="p-section-tortilla">
+                    <h2 class="font-label-lg text-xs font-black text-on-surface uppercase tracking-wider mb-3.5">Tipo de Tortilla</h2>
+                    <div class="flex gap-3">
+                        <button id="p-tortilla-maiz" class="flex-1 bg-secondary-container text-on-secondary-container border border-secondary-container rounded-lg py-3 px-4 font-label-lg text-center transition-all shadow-sm flex flex-col items-center gap-1 cursor-pointer" onclick="Controllers.selectTortilla('Maíz')">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+                            <span class="font-label-lg text-sm uppercase">Maíz</span>
+                        </button>
+                        <button id="p-tortilla-harina" class="flex-1 bg-surface border border-outline-variant text-on-surface-variant rounded-lg py-3 px-4 text-center transition-all hover:bg-surface-variant/50 flex flex-col items-center gap-1 cursor-pointer" onclick="Controllers.selectTortilla('Harina')">
+                            <span class="material-symbols-outlined">radio_button_unchecked</span>
+                            <span class="font-label-lg text-sm uppercase">Harina</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Garnituras -->
+                <section id="p-section-garnituras">
+                    <div class="flex justify-between items-end mb-3.5">
+                        <h2 class="font-label-lg text-xs font-black text-on-surface uppercase tracking-wider">Garnituras / Toppings</h2>
+                        <span class="font-label-sm text-[10px] text-on-surface-variant uppercase font-bold">Selecciona a tu gusto</span>
+                    </div>
+                    <div id="p-garnituras-chips" class="flex flex-wrap gap-2.5">
+                        <!-- Chips injected dynamically by updateCustomizationUI() -->
+                    </div>
+                </section>
+
+                <!-- Salsas -->
+                <section id="p-section-salsas">
+                    <div class="flex justify-between items-end mb-3.5">
+                        <h2 class="font-label-lg text-xs font-black text-on-surface uppercase tracking-wider">Salsas</h2>
+                        <span class="font-label-sm text-[10px] text-on-surface-variant uppercase font-bold">Incluidas a un lado</span>
+                    </div>
+                    <div id="p-salsas-grid" class="grid grid-cols-3 gap-3">
+                        <!-- Salsa cards injected dynamically by updateCustomizationUI() -->
+                    </div>
+                </section>
+
+                <!-- Quantity -->
+                <section class="flex items-center justify-between py-4 border-t border-outline-variant/30 mt-6">
+                    <h2 class="font-headline-md text-lg text-on-surface font-bold">Cantidad</h2>
+                    <div class="flex items-center bg-surface-container-high rounded-xl p-1 shadow-sm">
+                        <button class="w-10 h-10 flex items-center justify-center text-primary rounded-lg active:bg-surface-container-highest transition-colors cursor-pointer" onclick="Controllers.adjustQty(-1)">
+                            <span class="material-symbols-outlined font-black">remove</span>
+                        </button>
+                        <span id="p-qty-display" class="w-12 text-center font-headline-md text-base text-on-surface font-black">1</span>
+                        <button class="w-10 h-10 flex items-center justify-center text-primary bg-primary/15 rounded-lg active:bg-primary/25 transition-colors cursor-pointer" onclick="Controllers.adjustQty(1)">
+                            <span class="material-symbols-outlined font-black">add</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Floating Action Order Bar -->
+        <aside class="fixed bottom-0 w-full bg-surface/90 backdrop-blur-xl border-t border-outline-variant/30 px-margin-mobile py-4 pb-safe z-50">
+            <div class="max-w-2xl mx-auto">
+                <button class="w-full bg-primary text-on-primary rounded-xl py-4 px-6 flex justify-between items-center shadow-[0px_8px_20px_rgba(175,16,26,0.25)] hover:shadow-[0px_12px_24px_rgba(175,16,26,0.35)] active:scale-[0.98] transition-all cursor-pointer font-bold" onclick="Controllers.addToCartAndOrder()">
+                    <div class="flex flex-col items-start">
+                        <span class="font-label-sm text-[10px] text-on-primary/75 uppercase tracking-wider">Confirmar Pedido</span>
+                        <span id="p-footer-total" class="font-headline-md text-lg font-black">$0.00</span>
+                    </div>
+                    <div class="bg-white/20 rounded-full p-2 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+                    </div>
+                </button>
+            </div>
+        </aside>
+    </div>
+
+
+    <!-- 5. CLIENT: ESTADO DEL PEDIDO (TRACKER) VIEW -->
+    <div id="view-estado" class="view-panel pb-32">
+        <!-- TopAppBar -->
+        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky z-50 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 border-b border-outline-variant/20">
+            <button class="text-primary hover:bg-primary/10 p-2 rounded-full flex items-center justify-center active:scale-90 transition-all cursor-pointer" onclick="Router.navigateTo('menu')">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <h1 class="font-display-lg text-lg font-black text-primary italic tracking-tighter">ESTADO DEL PEDIDO</h1>
+            <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/40 cursor-pointer" onclick="Router.navigateTo('selector')">
+                <img alt="Perfil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtBYBTgOChhuSddIrP2_RQr8toLjgg-fOV4cm1wLfVar7vPc05lGUNgYLFFnHQ12dl_f7YUsIYwQjEkY2ZaLRS4cH11odjFJcYAArPT58jGDkAWrZL9D2h88ohzFF7_vD_KiPnkKAjBDqMA13pH99U9gUUVexdUxpa3NlncuSHOsk2O98qpbeeQoco3zsuzwGfIG6ZbdqGPgpu80uIf4AjE_6vhmFfzWybkoNZrnA335UFQ1bsANiDF2ysIbESKXSqedXxeJ25IgY"/>
+            </div>
+        </header>
+
+        <!-- Main Tracking Canvas -->
+        <main id="view-estado-content" class="max-w-2xl mx-auto px-margin-mobile py-8 flex flex-col gap-6">
+            <!-- Dynamic items layout injected by app.js -->
+        </main>
+
+        <!-- Bottom Bar -->
+        <nav class="md:hidden flex justify-around items-center w-full h-20 pb-safe px-4 bg-surface/90 backdrop-blur-xl docked full-width bottom-0 fixed z-50 rounded-t-xl border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(211,47,47,0.05)]">
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="inicio" onclick="Router.navigateTo('inicio')">
+                <span class="material-symbols-outlined text-[24px]">home</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Inicio</span>
+            </button>
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="menu" onclick="Router.navigateTo('menu')">
+                <span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Menú</span>
+            </button>
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="estado" onclick="Router.navigateTo('estado')">
+                <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Pedido</span>
+            </button>
+        </nav>
+    </div>
+
+
+    <!-- 6. ADMIN/CHEF: KITCHEN DISPLAY PANEL (KDS) VIEW -->
+    <div id="view-cocina" class="view-panel-flex min-h-screen">
+        <!-- Navigation Drawer Sidebar (Desktop Visible) -->
+        <aside class="fixed inset-y-0 left-0 w-80 bg-surface-container shadow-2xl flex flex-col h-full py-6 space-y-2 hidden md:flex border-r border-outline-variant/20 z-40">
+            <div class="px-6 mb-8 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary/40">
+                    <img alt="Chef Manager" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhjTJRr-9Q7byBDOUzjoqe5andq_UicIlFaCVRzQk_2y1TAFcuS61Ki7CqVKQ79FTmV-DEr2T0z50o8ZkGOvi3J8SrFvp2OdBoJwTeCoPjn-d0ItjRqCRZk5XS4fNBCmsaZ39X1KK16KGjWzCPyMePrsQeUzxm2cVhofaNy0KLWaQr3MtqOpuJNQQCq9XCq0IbdnoisWYn7GRzzsGbCwi8W8HhZ0elk3hR5TzKPVEVWXMvM1pNA-3gTjRjnIN1cSPdsipz5eMSPk"/>
+                </div>
+                <div class="flex-1">
+                    <h2 class="font-headline-md text-base font-black text-primary">Store Manager</h2>
+                    <p class="font-body-md text-xs text-on-surface-variant">GUEROBARBACOA</p>
+                    <span class="inline-block px-2 py-0.5 mt-1 bg-surface-container-highest text-[10px] text-on-surface-variant rounded font-black uppercase tracking-wider">Admin Mode</span>
+                </div>
+            </div>
+            
+            <nav class="flex-1 overflow-y-auto">
+                <ul class="space-y-1">
+                    <li>
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm drawer-nav-item" data-view="cocina" onclick="Router.navigateTo('cocina')">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">countertops</span>
+                            <span>Kitchen Queue</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm drawer-nav-item" data-view="estadisticas" onclick="Router.navigateTo('estadisticas')">
+                            <span class="material-symbols-outlined">monitoring</span>
+                            <span>Analytics Dashboard</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm" onclick="alert('Funcionalidad de Inventario próximamente en la versión comercial.')">
+                            <span class="material-symbols-outlined">inventory_2</span>
+                            <span>Inventory</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm" onclick="Router.navigateTo('selector')">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mt-auto px-6 pt-4 border-t border-outline-variant/30">
+                <div class="font-headline-lg text-primary text-base font-black text-center italic tracking-tighter">GUEROBARBACOA</div>
+            </div>
+        </aside>
+
+        <!-- KDS Main Area -->
+        <main class="flex-1 md:ml-80 flex flex-col min-h-screen bg-surface-bright">
+            <!-- Mobile KDS Header (Hidden on Desktop) -->
+            <header class="bg-surface/80 backdrop-blur-lg docked full-width top-0 sticky z-40 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 md:hidden">
+                <button class="text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full active:scale-95 transition-all cursor-pointer flex items-center justify-center" onclick="Router.navigateTo('selector')">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <h1 class="font-headline-lg text-base font-black text-primary italic tracking-tighter">GUEROBARBACOA KDS</h1>
+                <div class="w-8 h-8 rounded-full overflow-hidden">
+                    <img alt="Manager" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhjTJRr-9Q7byBDOUzjoqe5andq_UicIlFaCVRzQk_2y1TAFcuS61Ki7CqVKQ79FTmV-DEr2T0z50o8ZkGOvi3J8SrFvp2OdBoJwTeCoPjn-d0ItjRqCRZk5XS4fNBCmsaZ39X1KK16KGjWzCPyMePrsQeUzxm2cVhofaNy0KLWaQr3MtqOpuJNQQCq9XCq0IbdnoisWYn7GRzzsGbCwi8W8HhZ0elk3hR5TzKPVEVWXMvM1pNA-3gTjRjnIN1cSPdsipz5eMSPk"/>
+                </div>
+            </header>
+
+            <div class="flex-1 p-4 md:p-6 lg:p-12 overflow-x-hidden">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-3 mb-8">
+                    <div>
+                        <h2 class="font-display-lg text-2xl md:text-4xl text-on-surface font-black tracking-tight">Active Orders</h2>
+                        <p id="cocina-queue-count" class="font-body-md text-sm text-on-surface-variant mt-1.5 font-semibold">0 pending in queue</p>
+                    </div>
+                    <!-- Quick toggle for mobile to switch back to analytics -->
+                    <div class="flex gap-2.5 md:hidden">
+                        <button class="bg-primary text-on-primary text-xs font-bold px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-sm" onclick="Router.navigateTo('estadisticas')">
+                            <span class="material-symbols-outlined text-sm">monitoring</span> Analytics
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bento grid of kitchen orders -->
+                <div id="cocina-orders-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <!-- Cards injected dynamically from app.js -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <!-- 7. ADMIN: STATS & ANALYTICS VIEW -->
+    <div id="view-estadisticas" class="view-panel-flex min-h-screen">
+        <!-- Sidebar Navigation Drawer identical to KDS -->
+        <aside class="fixed inset-y-0 left-0 w-80 bg-surface-container shadow-2xl flex flex-col h-full py-6 space-y-2 hidden md:flex border-r border-outline-variant/20 z-40">
+            <div class="px-6 mb-8 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary/40">
+                    <img alt="Chef Manager" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhjTJRr-9Q7byBDOUzjoqe5andq_UicIlFaCVRzQk_2y1TAFcuS61Ki7CqVKQ79FTmV-DEr2T0z50o8ZkGOvi3J8SrFvp2OdBoJwTeCoPjn-d0ItjRqCRZk5XS4fNBCmsaZ39X1KK16KGjWzCPyMePrsQeUzxm2cVhofaNy0KLWaQr3MtqOpuJNQQCq9XCq0IbdnoisWYn7GRzzsGbCwi8W8HhZ0elk3hR5TzKPVEVWXMvM1pNA-3gTjRjnIN1cSPdsipz5eMSPk"/>
+                </div>
+                <div class="flex-1">
+                    <h2 class="font-headline-md text-base font-black text-primary">Store Manager</h2>
+                    <p class="font-body-md text-xs text-on-surface-variant">GUEROBARBACOA</p>
+                    <span class="inline-block px-2 py-0.5 mt-1 bg-surface-container-highest text-[10px] text-on-surface-variant rounded font-black uppercase tracking-wider">Admin Mode</span>
+                </div>
+            </div>
+            
+            <nav class="flex-1 overflow-y-auto">
+                <ul class="space-y-1">
+                    <li>
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm drawer-nav-item" data-view="cocina" onclick="Router.navigateTo('cocina')">
+                            <span class="material-symbols-outlined">countertops</span>
+                            <span>Kitchen Queue</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm drawer-nav-item" data-view="estadisticas" onclick="Router.navigateTo('estadisticas')">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+                            <span>Analytics Dashboard</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm" onclick="alert('Funcionalidad de Inventario próximamente en la versión comercial.')">
+                            <span class="material-symbols-outlined">inventory_2</span>
+                            <span>Inventory</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm" onclick="Router.navigateTo('selector')">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mt-auto px-6 pt-4 border-t border-outline-variant/30">
+                <div class="font-headline-lg text-primary text-base font-black text-center italic tracking-tighter">GUEROBARBACOA</div>
+            </div>
+        </aside>
+
+        <!-- Main Content Canvas Area -->
+        <main class="flex-1 md:ml-80 flex flex-col min-h-screen bg-surface-bright">
+            <!-- Mobile Admin Stats Header (Hidden on Desktop) -->
+            <header class="bg-surface/80 backdrop-blur-lg top-0 sticky z-40 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 md:hidden">
+                <button class="text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full active:scale-95 transition-all cursor-pointer flex items-center justify-center" onclick="Router.navigateTo('selector')">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <h1 class="font-headline-lg text-base font-black text-primary italic tracking-tighter">ESTADÍSTICAS</h1>
+                <div class="w-8 h-8 rounded-full overflow-hidden">
+                    <img alt="Manager Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhjTJRr-9Q7byBDOUzjoqe5andq_UicIlFaCVRzQk_2y1TAFcuS61Ki7CqVKQ79FTmV-DEr2T0z50o8ZkGOvi3J8SrFvp2OdBoJwTeCoPjn-d0ItjRqCRZk5XS4fNBCmsaZ39X1KK16KGjWzCPyMePrsQeUzxm2cVhofaNy0KLWaQr3MtqOpuJNQQCq9XCq0IbdnoisWYn7GRzzsGbCwi8W8HhZ0elk3hR5TzKPVEVWXMvM1pNA-3gTjRjnIN1cSPdsipz5eMSPk"/>
+                </div>
+            </header>
+
+            <div class="flex-1 p-margin-mobile md:p-6 lg:p-12 space-y-6 max-w-7xl mx-auto w-full pb-32 md:pb-lg">
+                <!-- Page Header -->
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                    <div>
+                        <h1 class="font-display-lg text-2xl md:text-4xl text-on-surface font-black tracking-tight">Dashboard Overview</h1>
+                        <p class="font-body-md text-sm text-on-surface-variant mt-1.5 font-semibold">Live metrics for GUEROBARBACOA #01</p>
+                    </div>
+                    <!-- Quick toggle for mobile to switch back to kitchen -->
+                    <div class="flex gap-2.5 md:hidden">
+                        <button class="bg-primary text-on-primary text-xs font-bold px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-sm" onclick="Router.navigateTo('cocina')">
+                            <span class="material-symbols-outlined text-sm">countertops</span> Kitchen
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KPI Bento Grid Cards (3 columns) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- KPI 1 -->
+                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0px_10px_30px_rgba(211,47,47,0.06)] border border-outline-variant/15 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="material-symbols-outlined text-primary text-6xl">payments</span>
+                        </div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 bg-primary/10 rounded-xl text-primary">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                            </div>
+                            <h3 class="font-label-lg text-sm font-bold text-on-surface-variant">Ventas Totales</h3>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span id="stats-revenue" class="font-display-lg text-3xl font-black text-on-surface">$0</span>
+                            <span class="font-label-sm text-xs text-primary font-black">+15% vs ayer</span>
+                        </div>
+                    </div>
+                    
+                    <!-- KPI 2 -->
+                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0px_10px_30px_rgba(211,47,47,0.06)] border border-outline-variant/15 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="material-symbols-outlined text-secondary-container text-6xl">local_mall</span>
+                        </div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 bg-secondary-container rounded-xl text-on-secondary-container">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+                            </div>
+                            <h3 class="font-label-lg text-sm font-bold text-on-surface-variant">Pedidos Activos</h3>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span id="stats-active-count" class="font-display-lg text-3xl font-black text-on-surface">0</span>
+                            <span class="font-label-sm text-xs text-on-surface-variant font-medium">en cocina</span>
+                        </div>
+                    </div>
+                    
+                    <!-- KPI 3 -->
+                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0px_10px_30px_rgba(211,47,47,0.06)] border border-outline-variant/15 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <span class="material-symbols-outlined text-tertiary text-6xl">receipt_long</span>
+                        </div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 bg-tertiary-container/20 rounded-xl text-tertiary">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt</span>
+                            </div>
+                            <h3 class="font-label-lg text-sm font-bold text-on-surface-variant">Ticket Promedio</h3>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span id="stats-ticket-avg" class="font-display-lg text-3xl font-black text-on-surface">$0</span>
+                            <span class="font-label-sm text-xs text-on-surface-variant font-medium">vs $280 anterior</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts & Lists row (2/3 & 1/3 columns) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Faux interactive product hourly chart -->
+                    <div class="lg:col-span-2 bg-surface-container-lowest rounded-2xl p-6 shadow-[0px_10px_30px_rgba(211,47,47,0.06)] border border-outline-variant/15 flex flex-col justify-between">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-headline-md text-base font-bold text-on-surface">Ventas por Hora</h3>
+                            <button class="p-2 hover:bg-surface-variant rounded-full text-on-surface-variant transition-colors flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm">more_vert</span>
+                            </button>
+                        </div>
+                        
+                        <div class="relative min-h-[250px] flex items-end justify-between gap-2 pt-10">
+                            <!-- Y-Axis Grid Marks -->
+                            <div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-on-surface-variant text-[10px] font-bold h-full pb-8">
+                                <span>$3k</span>
+                                <span>$2k</span>
+                                <span>$1k</span>
+                                <span>0</span>
+                            </div>
+                            <!-- Grid lines -->
+                            <div class="absolute left-8 right-0 top-2 border-t border-dashed border-outline-variant/20"></div>
+                            <div class="absolute left-8 right-0 top-1/3 border-t border-dashed border-outline-variant/20"></div>
+                            <div class="absolute left-8 right-0 top-2/3 border-t border-dashed border-outline-variant/20"></div>
+                            <div class="absolute left-8 right-0 bottom-8 border-t border-solid border-outline-variant/40"></div>
+                            
+                            <!-- Columns container -->
+                            <div id="faux-chart-container" class="ml-10 w-full flex justify-between items-end h-[calc(100%-32px)] z-10 px-2 gap-3 md:gap-4">
+                                <div class="w-full bg-surface-container-high rounded-t-lg h-[25%] relative group">
+                                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">$750</div>
+                                </div>
+                                <div class="w-full bg-surface-container-high rounded-t-lg h-[45%] relative group">
+                                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">$1,350</div>
+                                </div>
+                                <div class="w-full bg-primary/40 rounded-t-lg h-[65%] relative group transition-all duration-500">
+                                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">$1,950</div>
+                                </div>
+                                <div class="w-full bg-primary rounded-t-lg h-[85%] relative group transition-all duration-500">
+                                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">$2,550</div>
+                                </div>
+                                <div class="w-full bg-secondary-container rounded-t-lg h-[75%] relative group transition-all duration-500">
+                                    <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">$2,250</div>
+                                </div>
+                            </div>
+                            
+                            <!-- X-Axis Grid Labels -->
+                            <div class="absolute bottom-0 left-10 right-0 flex justify-between text-on-surface-variant text-[10px] font-bold px-2">
+                                <span>12pm</span>
+                                <span>2pm</span>
+                                <span>4pm</span>
+                                <span>6pm</span>
+                                <span>8pm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Orders List -->
+                    <div class="bg-surface-container-lowest rounded-2xl shadow-[0px_10px_30px_rgba(211,47,47,0.06)] border border-outline-variant/15 overflow-hidden flex flex-col justify-between">
+                        <div class="p-6 border-b border-outline-variant/15 flex justify-between items-center bg-surface-bright">
+                            <h3 class="font-headline-md text-base font-bold text-on-surface">Pedidos Recientes</h3>
+                        </div>
+                        <div class="flex-1 overflow-y-auto max-h-[250px] no-scrollbar">
+                            <ul id="stats-recent-orders-list" class="divide-y divide-outline-variant/15">
+                                <!-- Recent orders list items injected dynamically by app.js -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- App configuration (Supabase keys, restaurant info, adapter selection).
+         Loaded BEFORE app.js so it can swap the DataLayer adapter. -->
+    <script src="config.js"></script>
+
+    <!-- Load centralized Javascript logic -->
+    <script src="app.js"></script>
+</body>
+</html>

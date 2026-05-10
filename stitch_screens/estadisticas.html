@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - GUEROBARBACOA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "on-surface": "#271816",
+                        "on-surface-variant": "#5b403d",
+                        "primary-container": "#d32f2f",
+                        "secondary-container": "#fdd34d",
+                        "on-primary-fixed-variant": "#930010",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ffedeb",
+                        "secondary-fixed": "#ffe087",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#3e2c2a",
+                        "on-primary-container": "#fff2f0",
+                        "on-background": "#271816",
+                        "on-tertiary-fixed-variant": "#004d65",
+                        "on-error": "#ffffff",
+                        "background": "#fff8f7",
+                        "inverse-primary": "#ffb3ac",
+                        "on-secondary": "#ffffff",
+                        "primary": "#af101a",
+                        "on-tertiary-fixed": "#001f2a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#e9f7ff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#bee9ff",
+                        "tertiary": "#005f7b",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "surface-variant": "#f9dcd9",
+                        "primary-fixed-dim": "#ffb3ac",
+                        "surface-bright": "#fff8f7",
+                        "outline": "#8f6f6c",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed": "#410003",
+                        "surface-container": "#ffe9e7",
+                        "surface-container-highest": "#f9dcd9",
+                        "surface-container-high": "#ffe2de",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#ffdad6",
+                        "tertiary-container": "#00799c",
+                        "surface-tint": "#ba1a20",
+                        "tertiary-fixed-dim": "#7bd1f8",
+                        "on-secondary-fixed": "#241a00",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#e4beba",
+                        "surface-container-low": "#fff0ef",
+                        "on-secondary-container": "#725b00",
+                        "surface-dim": "#f1d3d0",
+                        "surface": "#fff8f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "margin-desktop": "120px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "sm": "12px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-lg": ["Montserrat"],
+                        "label-sm": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[style*="'FILL' 1"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen overflow-hidden flex">
+<!-- NavigationDrawer (Sidebar - Hidden on mobile, visible on md) -->
+<aside class="hidden md:flex flex-col fixed inset-y-0 left-0 w-80 z-[60] bg-surface-container dark:bg-inverse-surface shadow-2xl transition-transform duration-300 transform translate-x-0 border-r border-outline-variant/20">
+<div class="py-6 space-y-2 flex flex-col h-full">
+<!-- Header -->
+<div class="px-6 mb-8 flex items-center gap-4">
+<img alt="Manager Workspace" class="w-12 h-12 rounded-full object-cover border-2 border-primary" data-alt="A professional headshot of a restaurant manager in a brightly lit modern office space. The person is wearing a crisp white shirt. The background is slightly blurred but suggests a bustling, contemporary Mexican restaurant environment with warm lighting. The image relies on high contrast and vibrant yet professional tones, fitting a high-octane brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjd0sNNPVn34pAXtxN34jdbv1jtEMSpA0SBFE6ypcorbuwB7YmA_CHT6WysMpham9kl0EPKsADEX9VascPjx6K-9r0pPWjgmNvxaSn9HQZ247VhJ-vM7qHH0AEt0mY7oQrCbTS2AzRDK42zYI4860GXoZdnTV1Fsovv5gxpRX0hzaIBQgYWo66nbZn-YfVZMIYLuKJ4TEW4xZToncxjp1hLOTzwx6DkHMFTJZlyEa2gyiQYAEsAZ5EQ6Z7Jyt2XGGI81NIruvJbRY"/>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary font-black">GUEROBARBACOA</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Admin Mode</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all tap-highlight-transparent active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="countertops">countertops</span>
+<span class="font-label-lg text-label-lg">Kitchen</span>
+</a>
+<a class="flex items-center gap-4 bg-primary text-on-primary rounded-xl mx-4 my-1 px-4 py-3 shadow-md tap-highlight-transparent active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="font-label-lg text-label-lg">Analytics</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all tap-highlight-transparent active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-lg text-label-lg">Inventory</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all tap-highlight-transparent active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<!-- Footer / User Info -->
+<div class="p-6 border-t border-outline-variant/20 mt-auto">
+<div class="flex items-center gap-3">
+<div class="flex-1">
+<p class="font-label-lg text-label-lg font-bold text-on-surface">Store Manager</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">GUEROBARBACOA #01</p>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full md:ml-80 overflow-y-auto bg-surface-bright relative">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden flex justify-between items-center w-full px-margin-mobile h-16 bg-surface/80 backdrop-blur-lg docked full-width top-0 sticky z-50 border-b border-outline-variant/20 shadow-sm">
+<button class="text-on-surface p-2 hover:bg-primary-container/10 transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-black text-primary italic tracking-tighter">GUEROBARBACOA</h1>
+<button class="p-1 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User profile photo" class="w-8 h-8 object-cover" data-alt="A small circular avatar showing a professional headshot of a restaurant manager." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBESJ1phkHpj41aGCTrPS-Xz1Yv-G_eDo1bzH3Xww9F25rbAu8mGOfR_FTOF4UOfNOMAoNR3nZEezQbAhi3veo36vc-BRuDzx8Y93GlkwKbohe2mk_KHS9riC7EFO0Ll4zhpMfFZ32jZsfEA_r-aHND4ISelHF34nWfTMTq9vwCVoVvhuJtRuXbpyTgqyQFDok3u5U0f_AZqUicOpR_hZMvTYag7U-kHtj3TlubyWbcpww0zYkqlDrwepB8xlL2jpHutwDLAPB0krY"/>
+</button>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-margin-mobile md:p-md lg:p-lg space-y-md lg:space-y-lg max-w-7xl mx-auto w-full pb-32 md:pb-lg">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Dashboard Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Live metrics for GUEROBARBACOA #01</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container flex items-center gap-2 px-4 py-2 rounded-lg border border-outline-variant/50 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+<span class="font-label-lg text-label-lg">Today</span>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</button>
+<button class="bg-primary text-on-primary flex items-center gap-2 px-4 py-2 rounded-lg shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span>
+<span class="font-label-lg text-label-lg">Export</span>
+</button>
+</div>
+</div>
+<!-- KPIs (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter md:gap-md">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-primary text-6xl">payments</span>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<div class="p-3 bg-primary/10 rounded-xl text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Ventas Hoy</h3>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">$12,450</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">+15%</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-secondary text-6xl">local_mall</span>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<div class="p-3 bg-secondary-container rounded-xl text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Pedidos Activos</h3>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">42</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">en cocina</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-tertiary text-6xl">receipt_long</span>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<div class="p-3 bg-tertiary-container/30 rounded-xl text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt</span>
+</div>
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Ticket Promedio</h3>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">$295</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">vs $280 ayer</span>
+</div>
+</div>
+</div>
+<!-- Charts & Lists Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter md:gap-md">
+<!-- Chart Area (Spans 2 columns) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-2xl p-6 shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/10 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Productos más vendidos</h3>
+<button class="p-2 hover:bg-surface-variant rounded-full text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Faux Chart Representation using Flex/CSS for aesthetic -->
+<div class="flex-1 relative min-h-[250px] flex items-end justify-between gap-2 pt-10">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-on-surface-variant font-label-sm text-label-sm h-full pb-8">
+<span>$3k</span>
+<span>$2k</span>
+<span>$1k</span>
+<span>0</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute left-8 right-0 top-2 border-t border-dashed border-outline-variant/30"></div>
+<div class="absolute left-8 right-0 top-1/3 border-t border-dashed border-outline-variant/30"></div>
+<div class="absolute left-8 right-0 top-2/3 border-t border-dashed border-outline-variant/30"></div>
+<div class="absolute left-8 right-0 bottom-8 border-t border-solid border-outline-variant/50"></div>
+<!-- Bars -->
+<div class="ml-10 w-full flex justify-between items-end h-[calc(100%-32px)] z-10 px-2 gap-1 md:gap-4">
+<div class="w-full bg-surface-variant rounded-t-sm h-[20%] relative group"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$600</div></div>
+<div class="w-full bg-surface-variant rounded-t-sm h-[35%] relative group"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$1k</div></div>
+<div class="w-full bg-primary/40 rounded-t-sm h-[60%] relative group"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$1.8k</div></div>
+<div class="w-full bg-primary rounded-t-sm h-[90%] relative group"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$2.7k</div></div>
+<div class="w-full bg-secondary-container rounded-t-sm h-[75%] relative group"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$2.2k</div></div>
+<div class="w-full bg-surface-variant rounded-t-sm h-[50%] relative group"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$1.5k</div></div>
+<div class="w-full bg-surface-variant rounded-t-sm h-[30%] relative group"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-on-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$900</div></div>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-0 left-10 right-0 flex justify-between text-on-surface-variant font-label-sm text-label-sm px-2">
+<span>12pm</span>
+<span>1pm</span>
+<span>2pm</span>
+<span>3pm</span>
+<span>4pm</span>
+<span>5pm</span>
+<span>6pm</span>
+</div>
+</div>
+</div>
+<!-- Recent Orders Table/List -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/10 overflow-hidden flex flex-col">
+<div class="p-6 border-b border-outline-variant/20 flex justify-between items-center bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-on-surface">Productos más vendidos</h3>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">Ver todos</a>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="divide-y divide-outline-variant/20"><!-- Super Lonche -->
+<li class="p-4 hover:bg-surface-container transition-colors flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">fastfood</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">#1042 - Super Lonche</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hace 2 min • Carlos M.</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-surface">$110</p>
+<span class="inline-block px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase tracking-wide">Preparando</span>
+</div>
+</li>
+<!-- Taco de Barbacoa con queso -->
+<li class="p-4 hover:bg-surface-container transition-colors flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">restaurant_menu</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">#1041 - Taco de Barbacoa con queso</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hace 15 min • Ana G.</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-surface">$45</p>
+<span class="inline-block px-2 py-1 bg-tertiary-container/30 text-tertiary text-[10px] font-bold rounded-full uppercase tracking-wide">En camino</span>
+</div>
+</li>
+<!-- Lonche Bistec -->
+<li class="p-4 hover:bg-surface-container transition-colors flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">#1040 - Lonche Bistec</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hace 28 min • Luis P.</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-surface">$95</p>
+<span class="inline-block px-2 py-1 bg-surface-variant text-on-surface-variant text-[10px] font-bold rounded-full uppercase tracking-wide">Entregado</span>
+</div>
+</li></ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden flex justify-around items-center w-full h-20 pb-safe px-4 bg-surface/90 backdrop-blur-xl dark:bg-surface-container-highest/90 docked full-width bottom-0 fixed z-50 rounded-t-xl border-t border-outline-variant/30 shadow-[0px_-4px_20px_rgba(211,47,47,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1.5 hover:bg-surface-variant/50 Active: scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container rounded-full px-4 py-1.5 transition-all duration-300 hover:bg-surface-variant/50 Active: scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Analytics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1.5 hover:bg-surface-variant/50 Active: scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1.5 hover:bg-surface-variant/50 Active: scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

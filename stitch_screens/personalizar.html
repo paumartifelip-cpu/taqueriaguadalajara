@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Personalizar Tacos al Pastor - GUEROBARBACOA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary": "#735c00",
+                        "on-surface": "#271816",
+                        "on-surface-variant": "#5b403d",
+                        "primary-container": "#d32f2f",
+                        "secondary-container": "#fdd34d",
+                        "on-primary-fixed-variant": "#930010",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ffedeb",
+                        "secondary-fixed": "#ffe087",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#3e2c2a",
+                        "on-primary-container": "#fff2f0",
+                        "on-background": "#271816",
+                        "on-tertiary-fixed-variant": "#004d65",
+                        "on-error": "#ffffff",
+                        "background": "#fff8f7",
+                        "inverse-primary": "#ffb3ac",
+                        "on-secondary": "#ffffff",
+                        "primary": "#af101a",
+                        "on-tertiary-fixed": "#001f2a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#e9f7ff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#bee9ff",
+                        "tertiary": "#005f7b",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "surface-variant": "#f9dcd9",
+                        "primary-fixed-dim": "#ffb3ac",
+                        "surface-bright": "#fff8f7",
+                        "outline": "#8f6f6c",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed": "#410003",
+                        "surface-container": "#ffe9e7",
+                        "surface-container-highest": "#f9dcd9",
+                        "surface-container-high": "#ffe2de",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#ffdad6",
+                        "tertiary-container": "#00799c",
+                        "surface-tint": "#ba1a20",
+                        "tertiary-fixed-dim": "#7bd1f8",
+                        "on-secondary-fixed": "#241a00",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#e4beba",
+                        "surface-container-low": "#fff0ef",
+                        "on-secondary-container": "#725b00",
+                        "surface-dim": "#f1d3d0",
+                        "surface": "#fff8f7"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "margin-desktop": "120px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "sm": "12px",
+                        "margin-mobile": "20px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-lg": ["Montserrat"],
+                        "label-sm": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean horizontal scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen relative font-body-md">
+<!-- Hero Image Area -->
+<header class="relative w-full h-64 md:h-96">
+<div class="absolute inset-0 bg-black/20 z-10"></div>
+<img class="w-full h-full object-cover" data-alt="Close-up of a delicious Super Lonche Barbacoa. A crusty telera roll filled with tender, juicy shredded beef barbacoa, sliced avocado, and pickled red onions. Professional food photography in a bright, modern setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB8P9K5Y1f7M0N-mSjW9J0U-V4f8zP8V6R9S2T5U7V-W9X1Y3Z5A7B9C1D3E5F7G9H1I3J5K7L9M1N3O5P7Q9R1S3T5U7V9W1X3Y5Z7A9B1C3D5E7F9G1"/>
+<!-- Glassmorphic Back Button -->
+<div class="absolute top-safe pt-4 left-margin-mobile z-20">
+<button class="w-10 h-10 rounded-full bg-surface/40 backdrop-blur-md flex items-center justify-center text-on-surface shadow-sm border border-white/20">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin-mobile md:px-margin-desktop py-6 pb-32 max-w-4xl mx-auto -mt-6 relative z-20 bg-background rounded-t-3xl md:rounded-t-none md:mt-0 shadow-[0px_-10px_30px_rgba(211,47,47,0.05)] md:shadow-none">
+<!-- Product Header -->
+<div class="flex justify-between items-start mb-2">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Super Lonche Barbacoa</h1>
+<span class="font-headline-md text-headline-md text-primary bg-primary-container/10 px-3 py-1 rounded-lg">$80.00</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">Tradicional lonche de barbacoa de res premium, servido en pan telera crujiente con aguacate, cebolla morada y nuestra salsa especial de la casa.</p>
+<!-- Customization Sections -->
+<div class="space-y-8">
+<!-- Tortilla Type -->
+<section>
+<h2 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider mb-3">Tipo de Tortilla</h2>
+<div class="flex gap-3">
+<!-- Active Option (Corn Yellow) -->
+<button class="flex-1 bg-secondary-container text-on-secondary-container border border-secondary-container rounded-lg py-3 px-4 font-label-md text-center transition-colors shadow-sm flex flex-col items-center gap-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+<span class="font-label-lg text-label-lg">Maíz</span>
+</button>
+<!-- Inactive Option -->
+<button class="flex-1 bg-surface border border-outline-variant text-on-surface-variant rounded-lg py-3 px-4 text-center transition-colors hover:bg-surface-variant/50 flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">radio_button_unchecked</span>
+<span class="font-label-lg text-label-lg">Harina</span>
+</button>
+</div>
+</section>
+<!-- Garnishes -->
+<section>
+<div class="flex justify-between items-end mb-3">
+<h2 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Garnituras</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Selecciona a tu gusto</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<!-- Active Chip -->
+<button class="bg-secondary-container text-on-secondary-container border border-secondary-container rounded-full py-2 px-5 flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span class="font-label-sm text-label-sm uppercase">Cebolla</span>
+</button>
+<!-- Active Chip -->
+<button class="bg-secondary-container text-on-secondary-container border border-secondary-container rounded-full py-2 px-5 flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span class="font-label-sm text-label-sm uppercase">Cilantro</span>
+</button>
+<!-- Inactive Chip -->
+<button class="bg-surface border border-outline-variant text-on-surface-variant rounded-full py-2 px-5 flex items-center gap-2 transition-colors hover:bg-surface-variant/50">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="font-label-sm text-label-sm uppercase">Piña Extra (+$5)</span>
+</button>
+</div>
+</section>
+<!-- Salsas -->
+<section>
+<div class="flex justify-between items-end mb-3">
+<h2 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Salsas</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Incluidas a un lado</span>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<!-- Option 1 -->
+<button class="bg-surface border border-outline-variant text-on-surface-variant rounded-xl p-3 flex flex-col items-center gap-2 transition-colors hover:bg-surface-variant/50">
+<div class="w-8 h-8 rounded-full bg-red-600/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-600 text-[20px]">local_fire_department</span>
+</div>
+<span class="font-label-sm text-label-sm text-center">Roja<br/>(Picante)</span>
+</button>
+<!-- Option 2 (Active) -->
+<button class="bg-secondary-container border border-secondary-container text-on-secondary-container rounded-xl p-3 flex flex-col items-center gap-2 transition-colors shadow-sm">
+<div class="w-8 h-8 rounded-full bg-green-600/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-700 text-[20px]" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<span class="font-label-sm text-label-sm text-center font-bold">Verde<br/>(Suave)</span>
+</button>
+<!-- Option 3 -->
+<button class="bg-surface border border-outline-variant text-on-surface-variant rounded-xl p-3 flex flex-col items-center gap-2 transition-colors hover:bg-surface-variant/50">
+<div class="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600 text-[20px]">warning</span>
+</div>
+<span class="font-label-sm text-label-sm text-center">Habanero<br/>(Fuego)</span>
+</button>
+</div>
+</section>
+<!-- Quantity -->
+<section class="flex items-center justify-between py-4 border-t border-outline-variant/30 mt-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Cantidad</h2>
+<div class="flex items-center bg-surface-variant rounded-lg p-1">
+<button class="w-10 h-10 flex items-center justify-center text-primary rounded-md active:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-12 text-center font-headline-md text-headline-md text-on-surface">1</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary bg-primary/10 rounded-md active:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Bar (Ordering Component) -->
+<aside class="fixed bottom-0 w-full bg-surface/90 backdrop-blur-xl border-t border-outline-variant/30 px-margin-mobile py-4 pb-safe z-50">
+<div class="max-w-4xl mx-auto">
+<button class="w-full bg-primary text-on-primary rounded-xl py-4 px-6 flex justify-between items-center shadow-[0px_8px_20px_rgba(175,16,26,0.3)] active:scale-[0.98] transition-transform">
+<div class="flex flex-col items-start">
+<span class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-wider">Añadir al carrito</span>
+<span class="font-headline-md text-headline-md font-bold">$80.00</span>
+</div>
+<div class="bg-white/20 rounded-full p-2 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</div>
+</button>
+</div>
+</aside>
+</body></html>

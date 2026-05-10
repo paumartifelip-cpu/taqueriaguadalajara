@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Estado del Pedido - El Tapatío</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#735c00",
+                    "on-surface": "#271816",
+                    "on-surface-variant": "#5b403d",
+                    "primary-container": "#d32f2f",
+                    "secondary-container": "#fdd34d",
+                    "on-primary-fixed-variant": "#930010",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#ffedeb",
+                    "secondary-fixed": "#ffe087",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#3e2c2a",
+                    "on-primary-container": "#fff2f0",
+                    "on-background": "#271816",
+                    "on-tertiary-fixed-variant": "#004d65",
+                    "on-error": "#ffffff",
+                    "background": "#fff8f7",
+                    "inverse-primary": "#ffb3ac",
+                    "on-secondary": "#ffffff",
+                    "primary": "#af101a",
+                    "on-tertiary-fixed": "#001f2a",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#e9f7ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#bee9ff",
+                    "tertiary": "#005f7b",
+                    "secondary-fixed-dim": "#ebc23e",
+                    "surface-variant": "#f9dcd9",
+                    "primary-fixed-dim": "#ffb3ac",
+                    "surface-bright": "#fff8f7",
+                    "outline": "#8f6f6c",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-primary-fixed": "#410003",
+                    "surface-container": "#ffe9e7",
+                    "surface-container-highest": "#f9dcd9",
+                    "surface-container-high": "#ffe2de",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#ffdad6",
+                    "tertiary-container": "#00799c",
+                    "surface-tint": "#ba1a20",
+                    "tertiary-fixed-dim": "#7bd1f8",
+                    "on-secondary-fixed": "#241a00",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#e4beba",
+                    "surface-container-low": "#fff0ef",
+                    "on-secondary-container": "#725b00",
+                    "surface-dim": "#f1d3d0",
+                    "surface": "#fff8f7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "md": "24px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "margin-desktop": "120px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "sm": "12px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Montserrat"],
+                    "body-lg": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "label-lg": ["Montserrat"],
+                    "label-sm": ["Montserrat"],
+                    "body-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Hide scrollbar for clean UI but allow scrolling */
+        ::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar Shared Component -->
+<header class="bg-surface/80 backdrop-blur-lg dark:bg-surface-dim/80 docked full-width top-0 sticky z-50 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 border-b border-outline-variant/20">
+<button class="text-primary dark:text-primary-fixed-dim scale-95 active:opacity-80 transition-all hover:bg-primary-container/10 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary italic tracking-tighter dark:text-primary-fixed-dim">GUEROBARBACOA</h1>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-outline-variant/30 scale-95 active:opacity-80 transition-all">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A close up portrait of a person smiling softly, used as a user profile avatar. The lighting is bright and even, fitting a modern light-mode interface. The colors are warm and natural, harmonizing with the surrounding cream and red UI elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtBYBTgOChhuSddIrP2_RQr8toLjgg-fOV4cm1wLfVar7vPc05lGUNgYLFFnHQ12dl_f7YUsIYwQjEkY2ZaLRS4cH11odjFJcYAArPT58jGDkAWrZL9D2h88ohzFF7_vD_KiPnkKAjBDqMA13pH99U9gUUVexdUxpa3NlncuSHOsk2O98qpbeeQoco3zsuzwGfIG6ZbdqGPgpu80uIf4AjE_6vhmFfzWybkoNZrnA335UFQ1bsANiDF2ysIbESKXSqedXxeJ25IgY"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<!-- Suppressed BottomNavBar as this is a linear/transactional success screen -->
+<main class="flex-1 flex flex-col w-full max-w-2xl mx-auto px-margin-mobile py-lg gap-lg overflow-y-auto pb-xl">
+<!-- Status Header -->
+<section class="flex flex-col items-center text-center gap-sm mt-4">
+<div class="w-20 h-20 rounded-full bg-surface shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-outline-variant/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[48px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface">¡Pedido Confirmado!</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Orden #4829-AB</p>
+</section>
+<!-- Highlighted Time Indicator (Glassmorphism/Card) -->
+<section class="w-full bg-primary/10 border border-primary/20 rounded-xl p-md flex flex-col items-center justify-center relative overflow-hidden backdrop-blur-md">
+<!-- Subtle background texture/glow -->
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent pointer-events-none"></div>
+<div class="flex items-center gap-sm relative z-10">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Tiempo Estimado</span>
+<span class="font-headline-lg text-headline-lg text-primary leading-tight">Listo en 15 mins</span>
+</div>
+</div>
+</section>
+<!-- Visual Timeline -->
+<section class="w-full bg-surface rounded-xl p-md shadow-[0px_10px_30px_rgba(211,47,47,0.05)] border border-outline-variant/20">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xl">Estado de Preparación</h3>
+<div class="relative flex justify-between items-center w-full px-sm pb-sm">
+<!-- Track Background -->
+<div class="absolute top-5 left-8 right-8 h-1 bg-surface-variant rounded-full -z-10"></div>
+<!-- Track Progress -->
+<div class="absolute top-5 left-8 w-1/2 h-1 bg-primary rounded-full -z-10 transition-all duration-1000"></div>
+<!-- Step 1: Recibido (Completed) -->
+<div class="flex flex-col items-center gap-sm z-10 w-20">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Recibido</span>
+</div>
+<!-- Step 2: Preparando (Active) -->
+<div class="flex flex-col items-center gap-sm z-10 w-20 relative">
+<!-- Pulse effect -->
+<div class="absolute top-0 w-10 h-10 rounded-full bg-primary/30 animate-ping"></div>
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-[0_0_15px_rgba(175,16,26,0.5)]">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">outdoor_grill</span>
+</div>
+<span class="font-label-lg text-label-lg text-primary text-center">Preparando</span>
+</div>
+<!-- Step 3: Listo (Pending) -->
+<div class="flex flex-col items-center gap-sm z-10 w-20">
+<div class="w-10 h-10 rounded-full bg-surface-variant border-2 border-surface-container-high text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Listo</span>
+</div>
+</div>
+</section><section class="w-full bg-surface rounded-xl p-md shadow-[0px_10px_30px_rgba(211,47,47,0.05)] border border-outline-variant/20 flex flex-col gap-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Resumen del Pedido</h3>
+<div class="flex flex-col gap-sm">
+<!-- Item 1 -->
+<div class="flex justify-between items-center">
+<div class="flex gap-2">
+<span class="font-label-lg text-primary">1x</span>
+<span class="font-body-md text-on-surface">Super Lonche</span>
+</div>
+<span class="font-body-md text-on-surface-variant">$80.00</span>
+</div>
+<!-- Item 2 -->
+<div class="flex justify-between items-center">
+<div class="flex gap-2">
+<span class="font-label-lg text-primary">2x</span>
+<span class="font-body-md text-on-surface">Taco de Barbacoa con queso</span>
+</div>
+<span class="font-body-md text-on-surface-variant">$56.00</span>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px w-full bg-outline-variant/30"></div>
+<!-- Total -->
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-on-surface">Total</span>
+<span class="font-headline-md text-primary">$136.00</span>
+</div>
+</section>
+<!-- Pickup Details & Map -->
+<section class="w-full bg-surface rounded-xl shadow-[0px_10px_30px_rgba(211,47,47,0.05)] border border-outline-variant/20 overflow-hidden flex flex-col">
+<!-- Map Area -->
+<div class="h-32 w-full bg-surface-container-high relative">
+<img alt="Map view" class="w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A stylized, light-themed map overhead view showing city streets and blocks. A distinct red pin marks a specific central location. The map uses cream and pale grey tones that align perfectly with a modern, clean UI aesthetic, providing context without visual clutter." data-location="Guadalajara, Mexico Centro Histórico" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSQdygN_sMn_O0BxrwmWx_hNIl-v6ZbzIV3OvWKnogjDxeYZKllZHL5J_RcLkZI60M9dCLp9dT2_0sl-7tHQBFNXKAPsTP-FFzigxRaeNVwglWTqkm5wRlOJvXR4WSoUjTj5N2EHA1ozt3GrJ7KG7sYUL3_sN2umEkKg26-kvKfoN34HaEjh7yojyA6mXGhKNDI38xFGF1QCahTLHRh-BlfLebZdfumrqKh1o8hOumEqvMbkP7KSaWKtuOLXfReYKAM2r367QfbtI"/>
+<!-- Fake map pin -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary drop-shadow-md">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<!-- Address Content -->
+<div class="p-md flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Recoger en</h4>
+<p class="font-headline-md text-headline-md text-on-surface">Sucursal Centro</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Av. Juárez 1234, Zona Centro<br/>Guadalajara, Jalisco.</p>
+</div>
+</div>
+<!-- Action Button -->
+<button class="mt-sm w-full bg-primary text-on-primary font-label-lg text-label-lg py-3 px-6 rounded-lg shadow-sm hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">directions</span>
+                    Cómo llegar
+                </button>
+</div>
+</section>
+</main>
+</body></html>

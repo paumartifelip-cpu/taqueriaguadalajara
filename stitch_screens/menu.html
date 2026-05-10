@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GUEROBARBACOA - Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Hide scrollbar for category chips */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#735c00",
+                      "on-surface": "#271816",
+                      "on-surface-variant": "#5b403d",
+                      "primary-container": "#d32f2f",
+                      "secondary-container": "#fdd34d",
+                      "on-primary-fixed-variant": "#930010",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#ffedeb",
+                      "secondary-fixed": "#ffe087",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#3e2c2a",
+                      "on-primary-container": "#fff2f0",
+                      "on-background": "#271816",
+                      "on-tertiary-fixed-variant": "#004d65",
+                      "on-error": "#ffffff",
+                      "background": "#fff8f7",
+                      "inverse-primary": "#ffb3ac",
+                      "on-secondary": "#ffffff",
+                      "primary": "#af101a",
+                      "on-tertiary-fixed": "#001f2a",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#e9f7ff",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#bee9ff",
+                      "tertiary": "#005f7b",
+                      "secondary-fixed-dim": "#ebc23e",
+                      "surface-variant": "#f9dcd9",
+                      "primary-fixed-dim": "#ffb3ac",
+                      "surface-bright": "#fff8f7",
+                      "outline": "#8f6f6c",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-primary-fixed": "#410003",
+                      "surface-container": "#ffe9e7",
+                      "surface-container-highest": "#f9dcd9",
+                      "surface-container-high": "#ffe2de",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#ffdad6",
+                      "tertiary-container": "#00799c",
+                      "surface-tint": "#ba1a20",
+                      "tertiary-fixed-dim": "#7bd1f8",
+                      "on-secondary-fixed": "#241a00",
+                      "error": "#ba1a1a",
+                      "outline-variant": "#e4beba",
+                      "surface-container-low": "#fff0ef",
+                      "on-secondary-container": "#725b00",
+                      "surface-dim": "#f1d3d0",
+                      "surface": "#fff8f7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "md": "24px",
+                      "base": "8px",
+                      "xl": "80px",
+                      "margin-desktop": "120px",
+                      "xs": "4px",
+                      "lg": "48px",
+                      "sm": "12px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "body-lg": [
+                              "Montserrat"
+                      ],
+                      "headline-md": [
+                              "Montserrat"
+                      ],
+                      "display-lg": [
+                              "Montserrat"
+                      ],
+                      "label-lg": [
+                              "Montserrat"
+                      ],
+                      "label-sm": [
+                              "Montserrat"
+                      ],
+                      "body-md": [
+                              "Montserrat"
+                      ],
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-lg dark:bg-surface-dim/80 docked full-width top-0 sticky z-50 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 md:px-margin-desktop">
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-primary-container/10 transition-colors p-2 rounded-full scale-95 active:opacity-80 transition-all md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary italic tracking-tighter dark:text-primary-fixed-dim">GUEROBARBACOA</h1>
+<div class="hidden md:flex gap-md items-center font-label-lg text-label-lg">
+<a class="text-on-surface-variant hover:bg-primary-container/10 transition-colors px-3 py-2 rounded-full" href="#">Home</a>
+<a class="text-primary font-bold hover:bg-primary-container/10 transition-colors px-3 py-2 rounded-full" href="#">Menu</a>
+<a class="text-on-surface-variant hover:bg-primary-container/10 transition-colors px-3 py-2 rounded-full" href="#">Orders</a>
+</div>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-primary-container/10 transition-colors rounded-full overflow-hidden w-10 h-10 scale-95 active:opacity-80 transition-all">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A close-up, high-quality portrait photo of a user smiling, set against a clean, light-mode background. The lighting is soft and professional, highlighting natural skin tones. This serves as a realistic placeholder for an avatar in a modern mobile application, fitting seamlessly into a bright, premium UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBelpQUnZbc5YCfTzC-v3pdruBphg2wOcOTXu01sTo4N2R1jcyInA87pBmxlOi8YrKnEoXJamBL70QP4TIwscOABuIrnvbG4_xuk3NY-jdy1xo8sDB9XKSy-gxwWtiIoo1Of1fRqJVp48jG94_OsFhSgufIRdRxwjAQ4DDVOvQvTMjgsHn3QjVEKKbTZHZvDIm1LAZzGKBKlR7MqqbGBWZGt1Tl_s0lnu-F-6JgR1WqiwuKpEmuEyHWEUQNtl4sdmja0Z5M0PI_ufU"/>
+</button>
+</header>
+<!-- Sticky Category Chips -->
+<nav class="sticky top-16 z-40 bg-surface/90 backdrop-blur-md py-sm px-margin-mobile md:px-margin-desktop overflow-x-auto hide-scrollbar flex gap-sm border-b border-outline-variant/20 shadow-[0px_4px_10px_rgba(211,47,47,0.02)]">
+<button class="bg-secondary-container text-on-secondary-container font-label-lg text-label-lg px-lg py-2 rounded-full whitespace-nowrap shadow-sm transition-transform active:scale-95">Tacos</button>
+<button class="bg-surface/50 border border-outline-variant text-on-surface-variant hover:bg-surface-variant/30 font-label-lg text-label-lg px-lg py-2 rounded-full whitespace-nowrap transition-colors">Quesadillas</button>
+<button class="bg-surface/50 border border-outline-variant text-on-surface-variant hover:bg-surface-variant/30 font-label-lg text-label-lg px-lg py-2 rounded-full whitespace-nowrap transition-colors">Tortas</button>
+<button class="bg-surface/50 border border-outline-variant text-on-surface-variant hover:bg-surface-variant/30 font-label-lg text-label-lg px-lg py-2 rounded-full whitespace-nowrap transition-colors">Bebidas</button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-lg pb-32">
+<!-- Category Section: Tacos -->
+<section class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Tacos</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md md:gap-lg"><!-- Taco de Barbacoa -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-surface-variant flex flex-col group transition-transform hover:-translate-y-1 duration-300">
+<div class="h-56 w-full relative overflow-hidden bg-surface-container-low">
+<img alt="Taco de Barbacoa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkC-fgDS7OiFe592K-Xhxmwoz21sOWHMYDfgyDnuJSjlABs_r5YxTRHE_PfQZOZxlwttEDIjNxsB6qENVV69SUSi0uknKZ8nIf925xfQad8NiK3S25nlQAKwA1TwLSl_agcuhchMtWbB3SUFocwZUUtXtkzlXxL-BxXANxdbDlziyIV9gwwfjh2o1PhLIeGJgKco2C56LmPuO88MCQG1pkqGwbxJ5W1fl3V2rtqym-PAfk5X2zoALyXR1_gHyWV2NeIWJwAWrH_bI"/>
+</div>
+<div class="p-gutter flex flex-col flex-grow relative">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Taco de Barbacoa</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow line-clamp-2">Slow-cooked tender beef, seasoned with traditional spices, served with cilantro and onions.</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant/50">
+<span class="font-headline-md text-headline-md text-primary">$22.00</span>
+<button aria-label="Add to cart" class="bg-primary text-on-primary w-10 h-10 rounded shadow-sm flex items-center justify-center hover:bg-primary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Taco de Bistec -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-surface-variant flex flex-col group transition-transform hover:-translate-y-1 duration-300">
+<div class="h-56 w-full relative overflow-hidden bg-surface-container-low">
+<img alt="Taco de Bistec" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5yr2jlmFFAuDXqEk8DtVzbjI2Wd4pdLq9H9pbMpQwf9JsRjN6yRk4DKiucXpsRTljBtTi2K8yT2WEPJHBelXGrZhv2McpfsKQ_bXJ3ftSG8D3S-BlRp2FTw5ipYWWf0_mcnSa7kUYznyIwP5EBjjB_MmtgWhRAZivH5AWLIR_Ysscgvktiv-Qpk5hNsd42hI5igPaVTOPlAppgA4bjT0N4AEXA8heARKvzg0HLlOvJADUZZZTPzlg2OfREWntRNDZZnHwkLCVjdo"/>
+</div>
+<div class="p-gutter flex flex-col flex-grow relative">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Taco de Bistec</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow line-clamp-2">Thinly sliced grilled steak, perfectly seasoned and served on warm corn tortillas.</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant/50">
+<span class="font-headline-md text-headline-md text-primary">$22.00</span>
+<button aria-label="Add to cart" class="bg-primary text-on-primary w-10 h-10 rounded shadow-sm flex items-center justify-center hover:bg-primary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Taco de Barbacoa con queso -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-surface-variant flex flex-col group transition-transform hover:-translate-y-1 duration-300">
+<div class="h-56 w-full relative overflow-hidden bg-surface-container-low">
+<img alt="Taco de Barbacoa con queso" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkC-fgDS7OiFe592K-Xhxmwoz21sOWHMYDfgyDnuJSjlABs_r5YxTRHE_PfQZOZxlwttEDIjNxsB6qENVV69SUSi0uknKZ8nIf925xfQad8NiK3S25nlQAKwA1TwLSl_agcuhchMtWbB3SUFocwZUUtXtkzlXxL-BxXANxdbDlziyIV9gwwfjh2o1PhLIeGJgKco2C56LmPuO88MCQG1pkqGwbxJ5W1fl3V2rtqym-PAfk5X2zoALyXR1_gHyWV2NeIWJwAWrH_bI"/>
+</div>
+<div class="p-gutter flex flex-col flex-grow relative">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Taco de Barbacoa con queso</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow line-clamp-2">Tender barbacoa beef with melted Oaxacan cheese for a rich and savory flavor.</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant/50">
+<span class="font-headline-md text-headline-md text-primary">$28.00</span>
+<button aria-label="Add to cart" class="bg-primary text-on-primary w-10 h-10 rounded shadow-sm flex items-center justify-center hover:bg-primary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Taco de Bistec con queso -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-surface-variant flex flex-col group transition-transform hover:-translate-y-1 duration-300">
+<div class="h-56 w-full relative overflow-hidden bg-surface-container-low">
+<img alt="Taco de Bistec con queso" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5yr2jlmFFAuDXqEk8DtVzbjI2Wd4pdLq9H9pbMpQwf9JsRjN6yRk4DKiucXpsRTljBtTi2K8yT2WEPJHBelXGrZhv2McpfsKQ_bXJ3ftSG8D3S-BlRp2FTw5ipYWWf0_mcnSa7kUYznyIwP5EBjjB_MmtgWhRAZivH5AWLIR_Ysscgvktiv-Qpk5hNsd42hI5igPaVTOPlAppgA4bjT0N4AEXA8heARKvzg0HLlOvJADUZZZTPzlg2OfREWntRNDZZnHwkLCVjdo"/>
+</div>
+<div class="p-gutter flex flex-col flex-grow relative">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Taco de Bistec con queso</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow line-clamp-2">Savory grilled steak and gooey melted cheese, a classic Mexican street food delight.</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant/50">
+<span class="font-headline-md text-headline-md text-primary">$28.00</span>
+<button aria-label="Add to cart" class="bg-primary text-on-primary w-10 h-10 rounded shadow-sm flex items-center justify-center hover:bg-primary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Super Taco -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0px_10px_30px_rgba(211,47,47,0.08)] border border-surface-variant flex flex-col group transition-transform hover:-translate-y-1 duration-300">
+<div class="h-56 w-full relative overflow-hidden bg-surface-container-low">
+<img alt="Super Taco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH6eEDv33GwJH6W36cyZYD4NwCoNgSTJ_K1y_cutx3v6ms6l4nvhuwunueOQULYkefcyV5EeETGZ_chBxSQFz98PiycgrtdLuuJHu3Va5rOi8Kzgv6XsXpMDNWOSoma2_G2YqwWMbAv6Zdo5WnHnC3dH9LNoKoljzq_U7isq9_l5O1qaMCCUwbwsPsOHgEOouG85fReXE9VuoE_2bfnIjDb05HEHybVb_tfrwSQuGA6MzeGfqseyWi1sgCy_FAwwvT-oOIJ5VZoT8"/>
+</div>
+<div class="p-gutter flex flex-col flex-grow relative">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Super Taco</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow line-clamp-2">The ultimate feast! Extra meat, extra cheese, and all your favorite toppings.</p>
+<div class="flex justify-between items-end mt-auto pt-sm border-t border-surface-variant/50">
+<span class="font-headline-md text-headline-md text-primary">$38.00</span>
+<button aria-label="Add to cart" class="bg-primary text-on-primary w-10 h-10 rounded shadow-sm flex items-center justify-center hover:bg-primary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</article></div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface/90 backdrop-blur-xl dark:bg-surface-container-highest/90 docked full-width bottom-0 fixed z-50 rounded-t-xl shadow-[0px_-4px_20px_rgba(211,47,47,0.05)] flex justify-around items-center w-full h-20 pb-safe px-4">
+<!-- Inactive: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1.5 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Home</span>
+</a>
+<!-- Active: Menu -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container rounded-full px-4 py-1.5 transition-all duration-300 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Menu</span>
+</a>
+<!-- Inactive: Orders -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1.5 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Orders</span>
+</a>
+<!-- Inactive: Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-1.5 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
