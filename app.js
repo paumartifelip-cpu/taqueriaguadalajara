@@ -1266,9 +1266,13 @@ async function bootstrap() {
     SyncEngine.init();
 
     // Routing: respect deep link via URL hash (e.g. #menu, #cocina).
+    // Default to the customer home — the role selector is only reachable
+    // via the floating switcher (admin tool, not the customer entry).
     const hash = (window.location.hash || '').replace('#', '');
     const validViews = ['selector', 'inicio', 'menu', 'estado', 'cocina', 'estadisticas'];
-    Router.navigateTo(validViews.includes(hash) ? hash : 'selector');
+    const initialView = validViews.includes(hash) ? hash : 'inicio';
+    // If the customer has an open order, drop them on the tracker.
+    Router.navigateTo(Store.activeOrder && initialView === 'inicio' ? 'estado' : initialView);
 
     window.addEventListener('hashchange', () => {
         const v = (window.location.hash || '').replace('#', '');

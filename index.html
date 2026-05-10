@@ -118,53 +118,39 @@
     </div>
 
 
-    <!-- 1. VIEW SELECTOR / PORTAL DE BIENVENIDA -->
-    <section id="view-selector" class="view-panel active min-h-screen flex flex-col justify-center items-center px-6 py-12 bg-gradient-to-br from-primary/10 via-background to-secondary-container/10">
+    <!-- 1. ROLE SELECTOR (admin tool — accesible desde el switcher flotante) -->
+    <section id="view-selector" class="view-panel min-h-screen flex flex-col justify-center items-center px-6 py-10 bg-gradient-to-br from-primary/10 via-background to-secondary-container/10">
         <div class="max-w-2xl w-full text-center flex flex-col items-center gap-4">
-            <h1 class="font-display-lg text-4xl md:text-6xl font-black text-primary italic tracking-tighter mb-2 scale-95 md:scale-100">GÜERO BARBACOA</h1>
-            <p class="font-body-md text-sm md:text-base text-on-surface-variant max-w-lg mb-8 leading-relaxed">
-                ¡Bienvenido al ecosistema interactivo de Güero Barbacoa! Abre diferentes ventanas o dispositivos para ver la sincronización local en tiempo real.
+            <h1 class="font-display-lg text-3xl md:text-5xl font-black text-primary italic tracking-tighter">GÜERO BARBACOA</h1>
+            <p class="font-body-md text-sm md:text-base text-on-surface-variant max-w-md mb-6 leading-relaxed">
+                Selecciona el panel que quieres abrir.
             </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-                <!-- Select Client -->
-                <div class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1.5" onclick="Router.navigateTo('inicio')">
-                    <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                        <span class="material-symbols-outlined text-4xl">smartphone</span>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
+                <button class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-5 md:p-6 flex flex-col items-center text-center gap-3 cursor-pointer hover:shadow-lg transition-all duration-300" onclick="Router.navigateTo('inicio')">
+                    <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                        <span class="material-symbols-outlined text-3xl">smartphone</span>
                     </div>
-                    <div>
-                        <h3 class="font-headline-md text-base font-bold text-on-surface">Vista Cliente</h3>
-                        <p class="text-xs text-on-surface-variant mt-2 leading-relaxed">Pide tacos de barbacoa, personaliza tus lonches y sigue el estado de tu pedido.</p>
+                    <h3 class="font-headline-md text-base font-bold text-on-surface">Cliente</h3>
+                    <p class="text-xs text-on-surface-variant leading-relaxed">Carta, pedidos y seguimiento.</p>
+                </button>
+
+                <button class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-5 md:p-6 flex flex-col items-center text-center gap-3 cursor-pointer hover:shadow-lg transition-all duration-300" onclick="Router.navigateTo('cocina')">
+                    <div class="w-14 h-14 rounded-full bg-secondary-container/20 text-on-secondary-container flex items-center justify-center">
+                        <span class="material-symbols-outlined text-3xl">countertops</span>
                     </div>
-                    <span class="mt-auto text-xs bg-primary/10 text-primary font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Entrar</span>
-                </div>
-                
-                <!-- Select Kitchen -->
-                <div class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1.5" onclick="Router.navigateTo('cocina')">
-                    <div class="w-16 h-16 rounded-full bg-secondary-container/20 text-on-secondary-container flex items-center justify-center">
-                        <span class="material-symbols-outlined text-4xl">countertops</span>
+                    <h3 class="font-headline-md text-base font-bold text-on-surface">Cocina</h3>
+                    <p class="text-xs text-on-surface-variant leading-relaxed">Cola de pedidos en tiempo real.</p>
+                </button>
+
+                <button class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-5 md:p-6 flex flex-col items-center text-center gap-3 cursor-pointer hover:shadow-lg transition-all duration-300" onclick="Router.navigateTo('estadisticas')">
+                    <div class="w-14 h-14 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center">
+                        <span class="material-symbols-outlined text-3xl">monitoring</span>
                     </div>
-                    <div>
-                        <h3 class="font-headline-md text-base font-bold text-on-surface">Panel de Cocina</h3>
-                        <p class="text-xs text-on-surface-variant mt-2 leading-relaxed">Recibe órdenes al instante con campanazos acústicos y despacha platos en tiempo real.</p>
-                    </div>
-                    <span class="mt-auto text-xs bg-secondary-container text-on-secondary-container font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Despachar</span>
-                </div>
-                
-                <!-- Select Admin Stats -->
-                <div class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1.5" onclick="Router.navigateTo('estadisticas')">
-                    <div class="w-16 h-16 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center">
-                        <span class="material-symbols-outlined text-4xl">monitoring</span>
-                    </div>
-                    <div>
-                        <h3 class="font-headline-md text-base font-bold text-on-surface">Panel de Dueño</h3>
-                        <p class="text-xs text-on-surface-variant mt-2 leading-relaxed">Consulta ventas diarias, promedios de tickets y métricas del restaurante en tiempo real.</p>
-                    </div>
-                    <span class="mt-auto text-xs bg-tertiary/10 text-tertiary font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Analizar</span>
-                </div>
+                    <h3 class="font-headline-md text-base font-bold text-on-surface">Dueño</h3>
+                    <p class="text-xs text-on-surface-variant leading-relaxed">Ventas y métricas del día.</p>
+                </button>
             </div>
-            
-            <p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest mt-12 font-bold">Tip: ¡Prueba abrir dos pestañas juntas para ver la magia!</p>
         </div>
     </section>
 
@@ -172,7 +158,7 @@
     <!-- 2. CLIENT: INICIO (HOME LANDING VIEW) -->
     <div id="view-inicio" class="view-panel pb-32">
         <!-- Top App Bar -->
-        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky z-50 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16">
+        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky pt-safe z-50 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16">
             <h1 class="font-display-lg text-lg font-black text-primary italic tracking-tighter">GÜERO BARBACOA</h1>
             <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/40 cursor-pointer" onclick="Router.navigateTo('selector')">
                 <img alt="Perfil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBelpQUnZbc5YCfTzC-v3pdruBphg2wOcOTXu01sTo4N2R1jcyInA87pBmxlOi8YrKnEoXJamBL70QP4TIwscOABuIrnvbG4_xuk3NY-jdy1xo8sDB9XKSy-gxwWtiIoo1Of1fRqJVp48jG94_OsFhSgufIRdRxwjAQ4DDVOvQvTMjgsHn3QjVEKKbTZHZvDIm1LAZzGKBKlR7MqqbGBWZGt1Tl_s0lnu-F-6JgR1WqiwuKpEmuEyHWEUQNtl4sdmja0Z5M0PI_ufU"/>
@@ -267,7 +253,7 @@
                 <span class="material-symbols-outlined text-[24px]">home</span>
                 <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Inicio</span>
             </button>
-            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client animate-pulse" data-view="menu" onclick="Router.navigateTo('menu')">
+            <button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 bottom-nav-client" data-view="menu" onclick="Router.navigateTo('menu')">
                 <span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
                 <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Menú</span>
             </button>
@@ -281,7 +267,7 @@
 
     <!-- 3. CLIENT: MENÚ VIEW -->
     <div id="view-menu" class="view-panel pb-32">
-        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky z-50 border-b border-outline-variant/20 shadow-sm flex flex-col w-full z-40">
+        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky pt-safe z-50 border-b border-outline-variant/20 shadow-sm flex flex-col w-full z-40">
             <div class="flex justify-between items-center w-full px-margin-mobile h-16">
                 <button class="text-on-surface-variant hover:bg-primary/10 p-2 rounded-full flex items-center justify-center" onclick="Router.navigateTo('inicio')">
                     <span class="material-symbols-outlined">arrow_back</span>
@@ -424,7 +410,7 @@
     <!-- 5. CLIENT: ESTADO DEL PEDIDO (TRACKER) VIEW -->
     <div id="view-estado" class="view-panel pb-32">
         <!-- TopAppBar -->
-        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky z-50 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 border-b border-outline-variant/20">
+        <header class="bg-surface/80 backdrop-blur-lg top-0 sticky pt-safe z-50 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 border-b border-outline-variant/20">
             <button class="text-primary hover:bg-primary/10 p-2 rounded-full flex items-center justify-center active:scale-90 transition-all cursor-pointer" onclick="Router.navigateTo('menu')">
                 <span class="material-symbols-outlined">close</span>
             </button>
@@ -487,7 +473,7 @@
                         </button>
                     </li>
                     <li>
-                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm" onclick="alert('Funcionalidad de Inventario próximamente en la versión comercial.')">
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm" onclick="ToastEngine.show('Inventario disponible próximamente.')">
                             <span class="material-symbols-outlined">inventory_2</span>
                             <span>Inventory</span>
                         </button>
@@ -508,7 +494,7 @@
         <!-- KDS Main Area -->
         <main class="flex-1 md:ml-80 flex flex-col min-h-screen bg-surface-bright">
             <!-- Mobile KDS Header (Hidden on Desktop) -->
-            <header class="bg-surface/80 backdrop-blur-lg docked full-width top-0 sticky z-40 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 md:hidden">
+            <header class="bg-surface/80 backdrop-blur-lg docked full-width top-0 sticky pt-safe z-40 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 md:hidden">
                 <button class="text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full active:scale-95 transition-all cursor-pointer flex items-center justify-center" onclick="Router.navigateTo('selector')">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
@@ -571,7 +557,7 @@
                         </button>
                     </li>
                     <li>
-                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm" onclick="alert('Funcionalidad de Inventario próximamente en la versión comercial.')">
+                        <button class="w-[calc(100%-32px)] flex items-center gap-4 text-on-surface-variant rounded-xl mx-4 my-1 px-4 py-3 hover:bg-primary/10 hover:text-primary transition-all active:scale-[0.98] font-bold text-sm" onclick="ToastEngine.show('Inventario disponible próximamente.')">
                             <span class="material-symbols-outlined">inventory_2</span>
                             <span>Inventory</span>
                         </button>
@@ -592,7 +578,7 @@
         <!-- Main Content Canvas Area -->
         <main class="flex-1 md:ml-80 flex flex-col min-h-screen bg-surface-bright">
             <!-- Mobile Admin Stats Header (Hidden on Desktop) -->
-            <header class="bg-surface/80 backdrop-blur-lg top-0 sticky z-40 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 md:hidden">
+            <header class="bg-surface/80 backdrop-blur-lg top-0 sticky pt-safe z-40 border-b border-outline-variant/20 shadow-sm flex justify-between items-center w-full px-margin-mobile h-16 md:hidden">
                 <button class="text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full active:scale-95 transition-all cursor-pointer flex items-center justify-center" onclick="Router.navigateTo('selector')">
                     <span class="material-symbols-outlined">menu</span>
                 </button>

@@ -17,29 +17,28 @@ body {
     overflow-x: hidden;
 }
 
-/* View switcher panel and transitions */
-.view-panel {
-    display: none;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+/*
+ * View switcher panel and transitions.
+ *
+ * Hide-only-when-inactive — let the element's natural display (from
+ * Tailwind utilities like .flex, or the tag's default block) win when
+ * .active is present. Avoids clashing with `flex flex-col` on the
+ * welcome screen (specificity bug from the original code).
+ */
+.view-panel:not(.active),
+.view-panel-flex:not(.active) {
+    display: none !important;
 }
 
-.view-panel.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
+.view-panel,
 .view-panel-flex {
-    display: none;
     opacity: 0;
     transform: translateY(12px);
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.view-panel.active,
 .view-panel-flex.active {
-    display: flex;
     opacity: 1;
     transform: translateY(0);
 }
@@ -52,28 +51,45 @@ body {
     padding-top: env(safe-area-inset-top, 16px);
 }
 
+/* iOS-safe full viewport height (dvh tracks the visible viewport;
+ * vh on iOS includes the address bar and creates a hueco arriba). */
+@supports (height: 100dvh) {
+    .min-h-screen { min-height: 100dvh; }
+}
+
 /* Toast Toaster System */
 #toast-container {
     position: fixed;
-    top: 24px;
-    right: 24px;
+    top: calc(16px + env(safe-area-inset-top, 0px));
+    right: 16px;
+    left: 16px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: 12px;
     pointer-events: none;
+}
+@media (min-width: 640px) {
+    #toast-container {
+        left: auto;
+        right: 24px;
+        top: calc(24px + env(safe-area-inset-top, 0px));
+    }
 }
 
 .toast {
     pointer-events: auto;
-    background: rgba(255, 248, 247, 0.95);
+    background: rgba(255, 248, 247, 0.96);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1.5px solid #af101a;
     border-left: 6px solid #af101a;
     box-shadow: 0 12px 30px rgba(175, 16, 26, 0.12);
     border-radius: 12px;
-    padding: 16px;
-    width: 320px;
+    padding: 14px 16px;
+    width: 100%;
+    max-width: 360px;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -116,12 +132,19 @@ body {
     }
 }
 
-/* Floating Switcher Bar - Quick Portal Switcher */
+/* Floating Switcher Bar - Quick Portal Switcher.
+ * On mobile sit above the bottom nav so they don't overlap. */
 #global-view-switcher {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    right: 16px;
     z-index: 100;
+}
+@media (min-width: 768px) {
+    #global-view-switcher {
+        bottom: 24px;
+        right: 24px;
+    }
 }
 
 .switcher-btn {
