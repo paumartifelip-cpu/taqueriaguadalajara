@@ -118,15 +118,15 @@
     </div>
 
 
-    <!-- 1. ROLE SELECTOR (admin tool — accesible desde el switcher flotante) -->
-    <section id="view-selector" class="view-panel min-h-screen flex flex-col justify-center items-center px-6 py-10 bg-gradient-to-br from-primary/10 via-background to-secondary-container/10">
-        <div class="max-w-2xl w-full text-center flex flex-col items-center gap-4">
+    <!-- 1. ROLE SELECTOR + PROPUESTA ECONÓMICA -->
+    <section id="view-selector" class="view-panel min-h-screen flex flex-col items-center px-6 pt-16 md:pt-20 pb-20 bg-gradient-to-br from-primary/10 via-background to-secondary-container/10">
+        <div class="max-w-4xl w-full text-center flex flex-col items-center gap-4">
             <h1 class="font-display-lg text-3xl md:text-5xl font-black text-primary italic tracking-tighter">GÜERO BARBACOA</h1>
             <p class="font-body-md text-sm md:text-base text-on-surface-variant max-w-md mb-6 leading-relaxed">
                 Selecciona el panel que quieres abrir.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-2xl">
                 <button class="bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 rounded-2xl p-5 md:p-6 flex flex-col items-center text-center gap-3 cursor-pointer hover:shadow-lg transition-all duration-300" onclick="Router.navigateTo('inicio')">
                     <div class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center">
                         <span class="material-symbols-outlined text-3xl">smartphone</span>
@@ -150,6 +150,81 @@
                     <h3 class="font-headline-md text-base font-bold text-on-surface">Dueño</h3>
                     <p class="text-xs text-on-surface-variant leading-relaxed">Ventas y métricas del día.</p>
                 </button>
+            </div>
+
+            <!-- ============= PROPUESTA ECONÓMICA ============= -->
+            <div class="w-full mt-16 md:mt-20 text-left">
+                <div class="text-center mb-8">
+                    <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] md:text-xs font-black uppercase tracking-widest mb-3">Propuesta Comercial</span>
+                    <h2 class="font-display-lg text-2xl md:text-4xl font-black text-on-surface tracking-tight">Inversión y mantenimiento</h2>
+                    <p class="text-sm text-on-surface-variant mt-2 max-w-xl mx-auto">
+                        Plataforma completa de pedidos digitales hecha a la medida del local, lista para escalar.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                    <!-- CARD: Implementación inicial -->
+                    <div class="relative bg-surface-container-lowest border-2 border-primary/30 rounded-3xl p-6 md:p-8 shadow-[0_18px_40px_rgba(175,16,26,0.10)] overflow-hidden">
+                        <span class="absolute top-4 right-4 text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 px-2.5 py-1 rounded-full">Pago único</span>
+                        <div class="flex items-center gap-3 mb-1">
+                            <div class="w-11 h-11 rounded-2xl bg-primary text-on-primary flex items-center justify-center shadow-md">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                            </div>
+                            <h3 class="font-headline-md text-base md:text-lg font-black text-on-surface">Implementación inicial</h3>
+                        </div>
+                        <div class="flex items-baseline gap-2 mt-4">
+                            <span class="font-display-lg text-4xl md:text-5xl font-black text-primary">$7,450</span>
+                            <span class="font-bold text-sm text-on-surface-variant">MXN</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant mt-1 mb-5 font-semibold uppercase tracking-wider">Único, al arranque del proyecto</p>
+
+                        <ul class="space-y-2.5 text-sm">
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Diseño UX/UI personalizado al estilo del local</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Carta digital interactiva con fotos y personalización</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Sistema de pedidos en tiempo real entre cliente y cocina</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Panel de cocina (KDS) con notificaciones sonoras</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Panel administrativo con ventas y métricas en vivo</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Base de datos en la nube configurada (Supabase)</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Optimización móvil (iOS y Android) e instalable como app</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Dominio personalizado + certificado SSL incluido</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Capacitación al personal (1 sesión)</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Acompañamiento durante las primeras 2 semanas</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- CARD: Mantenimiento mensual -->
+                    <div class="relative bg-surface-container-lowest border-2 border-secondary-container rounded-3xl p-6 md:p-8 shadow-[0_18px_40px_rgba(253,211,77,0.18)] overflow-hidden">
+                        <span class="absolute top-4 right-4 text-[10px] font-black uppercase tracking-widest text-on-secondary-container bg-secondary-container px-2.5 py-1 rounded-full">Recurrente</span>
+                        <div class="flex items-center gap-3 mb-1">
+                            <div class="w-11 h-11 rounded-2xl bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-md">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+                            </div>
+                            <h3 class="font-headline-md text-base md:text-lg font-black text-on-surface">Mantenimiento mensual</h3>
+                        </div>
+                        <div class="flex items-baseline gap-2 mt-4">
+                            <span class="font-display-lg text-4xl md:text-5xl font-black text-on-secondary-container">$450</span>
+                            <span class="font-bold text-sm text-on-surface-variant">MXN / mes</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant mt-1 mb-5 font-semibold uppercase tracking-wider">A partir del segundo mes</p>
+
+                        <ul class="space-y-2.5 text-sm">
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Hosting y base de datos en la nube incluidos</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Respaldos automáticos diarios de la información</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Monitoreo 24/7 del servicio y alertas de caídas</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Actualizaciones de seguridad y mejoras de rendimiento</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Soporte técnico vía WhatsApp en horario laboral</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Cambios ilimitados de precios y productos en la carta</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">1 hora mensual incluida para ajustes y mejoras</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Reporte mensual de uso, pedidos y rendimiento</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Renovación de dominio y SSL gestionados</span></li>
+                            <li class="flex gap-2.5"><span class="material-symbols-outlined text-on-secondary-container text-[18px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="text-on-surface">Sin permanencia: cancelable cuando quieras</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="text-center text-xs text-on-surface-variant/80 mt-6 max-w-2xl mx-auto leading-relaxed">
+                    Precios en pesos mexicanos. La cuota mensual comienza el segundo mes tras la entrega. Cualquier desarrollo adicional fuera del alcance se cotiza por separado.
+                </p>
             </div>
         </div>
     </section>
